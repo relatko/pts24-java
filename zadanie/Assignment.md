@@ -36,7 +36,7 @@ You should use Git and produce a reasonable history of commits. Note that to wor
 
 ## Instructions for submitting your project
 
-Send your solution to [lukotka.pts@gmail.com](lukotka.pts@gmail.com). The deadline is 30.11.2022 23:59:59. The solutions sent later will be accepted, however the number of points awarded may be reduced.
+Send your solution to [lukotka.pts@gmail.com](lukotka.pts at gmail.com). The deadline is 30.11.2022 23:59:59. The solutions sent later will be accepted, however the number of points awarded may be reduced.
 
 Send the solution to me either as compressed folders containing the whole repository (including the hidden .git files) or as a link to private repository with read access granted (GitHub handle `relatko`). Attach a link to the public repository for the team part of the project and link PRs you have made and PRs you have reviewed. 
 
