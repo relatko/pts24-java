@@ -32,4 +32,10 @@ public final class SimpleBuilding implements Building {
         }
         return OptionalInt.of(sum);
     }
+
+    // TODO
+    @Override
+    public String state() {
+        return "TODO";
+    }
 }
