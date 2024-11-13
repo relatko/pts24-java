@@ -1,11 +1,10 @@
 package sk.uniba.fmph.dcs.game_phase_controller;
 
-
 import sk.uniba.fmph.dcs.stone_age.ActionResult;
 import sk.uniba.fmph.dcs.stone_age.Effect;
+import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
-import sk.uniba.fmph.dcs.stone_age.HasAction;
 
 import java.util.Collection;
 
