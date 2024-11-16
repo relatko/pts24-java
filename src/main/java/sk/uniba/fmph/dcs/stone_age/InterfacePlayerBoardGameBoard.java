@@ -18,4 +18,5 @@ public interface InterfacePlayerBoardGameBoard {
     boolean hasSufficientTools(int goal);
 
     Optional<Integer> useTool(int idx);
+
 }
