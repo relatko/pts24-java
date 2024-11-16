@@ -11,7 +11,8 @@ import java.util.Map;
 
 public final class WaitingForToolUse implements InterfaceGamePhaseState {
     private final Map<PlayerOrder, InterfaceToolUse> interfaceToolUseCollection;
-    public WaitingForToolUse(final Map<PlayerOrder, InterfaceToolUse> interfaceToolUseCollection) { this.interfaceToolUseCollection = interfaceToolUseCollection; }
+    public WaitingForToolUse(final Map<PlayerOrder, InterfaceToolUse> interfaceToolUseCollection) {
+        this.interfaceToolUseCollection = interfaceToolUseCollection; }
 
     @Override
     public ActionResult placeFigures(final PlayerOrder player, final Location location, final int figuresCount) {
@@ -29,8 +30,7 @@ public final class WaitingForToolUse implements InterfaceGamePhaseState {
     public ActionResult useTools(final PlayerOrder player, final int toolIndex) {
         if (interfaceToolUseCollection.get(player).useTool(toolIndex)) {
             return ActionResult.ACTION_DONE;
-        }
-        else {
+        } else {
             return ActionResult.FAILURE;
         }
     }
