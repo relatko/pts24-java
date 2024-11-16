@@ -68,5 +68,4 @@ public final class WaitingForToolUse implements InterfaceGamePhaseState {
 
         return HasAction.WAITING_FOR_PLAYER_ACTION;
     }
-
 }
