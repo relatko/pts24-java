@@ -1,16 +1,17 @@
 package sk.uniba.fmph.dcs.game_phase_controller;
-
-import sk.uniba.fmph.dcs.game_board.Player;
-import sk.uniba.fmph.dcs.stone_age.*;
+import sk.uniba.fmph.dcs.stone_age.ActionResult;
+import sk.uniba.fmph.dcs.stone_age.Effect;
+import sk.uniba.fmph.dcs.stone_age.HasAction;
+import sk.uniba.fmph.dcs.stone_age.Location;
+import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
+import sk.uniba.fmph.dcs.stone_age.InterfaceToolUse;
 
 import java.util.Collection;
 import java.util.Map;
 
-public class WaitingForToolUse implements InterfaceGamePhaseState {
+public final class WaitingForToolUse implements InterfaceGamePhaseState {
     private final Map<PlayerOrder, InterfaceToolUse> interfaceToolUseCollection;
-    public WaitingForToolUse(final Map<PlayerOrder, InterfaceToolUse> interfaceToolUseCollection) {
-        this.interfaceToolUseCollection = interfaceToolUseCollection;
-    }
+    public WaitingForToolUse(final Map<PlayerOrder, InterfaceToolUse> interfaceToolUseCollection) { this.interfaceToolUseCollection = interfaceToolUseCollection; }
 
     @Override
     public ActionResult placeFigures(final PlayerOrder player, final Location location, final int figuresCount) {
@@ -26,7 +27,7 @@ public class WaitingForToolUse implements InterfaceGamePhaseState {
     }
     @Override
     public ActionResult useTools(final PlayerOrder player, final int toolIndex) {
-        if(interfaceToolUseCollection.get(player).useTool(toolIndex)) {
+        if (interfaceToolUseCollection.get(player).useTool(toolIndex)) {
             return ActionResult.ACTION_DONE;
         }
         else {
@@ -35,8 +36,8 @@ public class WaitingForToolUse implements InterfaceGamePhaseState {
     }
 
     @Override
-    public ActionResult noMoreToolsThisThrow(final PlayerOrder player){
-        if(interfaceToolUseCollection.get(player).finishUsingTools()) {
+    public ActionResult noMoreToolsThisThrow(final PlayerOrder player) {
+        if (interfaceToolUseCollection.get(player).finishUsingTools()) {
             return ActionResult.ACTION_DONE;
         } else {
             return ActionResult.FAILURE;
