@@ -19,7 +19,7 @@ public final class PlaceFigureState implements InterfaceGamePhaseState {
 
     @Override
     public ActionResult placeFigures(final PlayerOrder player, final Location location, final int figuresCount) {
-        if (places.get(location).placeFigures(player, figuresCount)) {
+        if (places.containsKey(location) && places.get(location).placeFigures(player, figuresCount)) {
             return ActionResult.ACTION_DONE;
         }
         return ActionResult.FAILURE;

@@ -15,6 +15,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static sk.uniba.fmph.dcs.stone_age.Location.FIELD;
+import static sk.uniba.fmph.dcs.stone_age.Location.FOREST;
 
 public class PlaceFigureStateTest {
 
@@ -61,6 +62,7 @@ public class PlaceFigureStateTest {
         places.put(FIELD, new InterfaceFigureLocationMock());
         PlaceFigureState placeFigureState = new PlaceFigureState(places);
         assertEquals(placeFigureState.placeFigures(new PlayerOrder(1, 1), FIELD, 1), ActionResult.ACTION_DONE);
+        assertEquals(placeFigureState.placeFigures(new PlayerOrder(1, 1), FOREST, 1), ActionResult.FAILURE);
         assertEquals(placeFigureState.placeFigures(new PlayerOrder(1, 1), FIELD, 2), ActionResult.FAILURE);
     }
 
@@ -69,7 +71,7 @@ public class PlaceFigureStateTest {
         Map<Location, InterfaceFigureLocation> places = new HashMap<>();
         places.put(Location.FIELD, new InterfaceFigureLocationMock());
         places.put(Location.HUT, new InterfaceFigureLocationMock());
-        places.put(Location.FOREST, new InterfaceFigureLocationMock());
+        places.put(FOREST, new InterfaceFigureLocationMock());
 
         PlaceFigureState placeFigureState = new PlaceFigureState(places);
 
