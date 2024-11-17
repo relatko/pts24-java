@@ -18,6 +18,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.google.googlejavaformat</groupId>
+      <artifactId>google-java-format</artifactId>
+      <version>1.23.0</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
@@ -83,19 +88,9 @@
           <version>3.0.0</version>
         </plugin>
         <plugin>
-        <groupId>net.revelc.code.formatter</groupId>
-        <artifactId>formatter-maven-plugin</artifactId>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>format</goal>
-                </goals>
-                <configuration>
-                    <configFile>eclipse-java-google-style.xml</configFile>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </execution>
-        </executions>
+          <groupId>net.revelc.code.formatter</groupId>
+          <artifactId>formatter-maven-plugin</artifactId>
+          <version>2.11.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
