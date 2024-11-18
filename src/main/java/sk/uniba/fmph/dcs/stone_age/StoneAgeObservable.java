@@ -15,7 +15,7 @@ public final class StoneAgeObservable implements InterfaceStoneAgeObservable {
         observerMap.put(playerId, observer);
     }
 
-    public void notify(String gameState) {
+    public void notify(final String gameState) {
         for (InterfaceStoneAgeObserver observer : observerMap.values()) {
             observer.update(gameState);
         }
