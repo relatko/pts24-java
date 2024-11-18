@@ -24,9 +24,11 @@ public class PlayerResourcesAndFood {
      * For each resource R: if this resource is x times in list resources, this function checks if player has at least x
      * amount of resource R.
      *
-     * @param resources list of resources
+     * @param resources
+     *            list of resources
+     *
      * @return true if player has at least x of each resource R listed in resources (x is number of occurrences of R in
-     * resources).
+     *         resources).
      */
     public boolean hasResources(final Effect[] resources) {
         Map<Effect, Integer> amountToCheck = new HashMap<>();
@@ -43,10 +45,11 @@ public class PlayerResourcesAndFood {
     }
 
     /**
-     * Take resources from player
-     * This function increases value of resource R by one for each occurrence of R in resources.
+     * Take resources listed in resources from player.
      *
-     * @param resources list of resources to be taken from board.
+     * @param resources
+     *            list of resources to be taken from board.
+     *
      * @return true - always. Something else should check if player can take resource.
      */
     public boolean takeResources(final Effect[] resources) {
@@ -60,9 +63,11 @@ public class PlayerResourcesAndFood {
     }
 
     /**
-     * Give resources to player
+     * Give resources to player.
      *
-     * @param resources - list of resources listed in Effect.
+     * @param resources
+     *            - list of resources listed in Effect.
+     *
      * @return true if player has at least one resource of each resource listed in resources.
      */
     public boolean giveResources(final Effect[] resources) {
