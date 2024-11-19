@@ -2,6 +2,7 @@ package sk.uniba.fmph.dcs.game_phase_controller;
 
 import org.junit.Test;
 import sk.uniba.fmph.dcs.stone_age.*;
+
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
@@ -19,30 +20,42 @@ public class WaitingForToolUseTest {
         }
 
         @Override
-        public boolean useTool(int idx) { return canUseTools; }
+        public boolean useTool(int idx) {
+            return canUseTools;
+        }
 
         @Override
-        public boolean canUseTools() { return canUseTools; }
+        public boolean canUseTools() {
+            return canUseTools;
+        }
 
         @Override
-        public boolean finishUsingTools(){ return finishedUsingTools; }
+        public boolean finishUsingTools() {
+            return finishedUsingTools;
+        }
 
 
     }
+
     @Test
     public void test_tryToMakeAutomaticAction() {
         HashMap<PlayerOrder, InterfaceToolUse> map = new HashMap<>();
         PlayerOrder player1 = new PlayerOrder(1, 1);
         PlayerOrder player2 = new PlayerOrder(2, 2);
         PlayerOrder player3 = new PlayerOrder(3, 3);
+        PlayerOrder player4 = new PlayerOrder(4, 4);
 
-        map.put(player1, new WaitingForToolUseTest.InterfaceToolUseMock( false, false));
-        map.put(player2, new WaitingForToolUseTest.InterfaceToolUseMock( false, true));
-        map.put(player3, new WaitingForToolUseTest.InterfaceToolUseMock( true, true));
+
+        map.put(player1, new WaitingForToolUseTest.InterfaceToolUseMock(false, false));
+        map.put(player2, new WaitingForToolUseTest.InterfaceToolUseMock(false, true));
+        map.put(player3, new WaitingForToolUseTest.InterfaceToolUseMock(true, true));
+        map.put(player4, new WaitingForToolUseTest.InterfaceToolUseMock(true, false));
         WaitingForToolUse toolUse = new WaitingForToolUse(map);
         assertEquals(toolUse.tryToMakeAutomaticAction(player1), HasAction.NO_ACTION_POSSIBLE);
         assertEquals(toolUse.tryToMakeAutomaticAction(player2), HasAction.NO_ACTION_POSSIBLE);
         assertEquals(toolUse.tryToMakeAutomaticAction(player3), HasAction.AUTOMATIC_ACTION_DONE);
+        assertEquals(toolUse.tryToMakeAutomaticAction(player4), HasAction.WAITING_FOR_PLAYER_ACTION);
+
     }
 
     @Test
@@ -52,7 +65,7 @@ public class WaitingForToolUseTest {
         PlayerOrder player2 = new PlayerOrder(2, 2);
 
         map.put(player1, new InterfaceToolUseMock(false, false));
-        map.put(player2, new InterfaceToolUseMock( true, false));
+        map.put(player2, new InterfaceToolUseMock(true, false));
 
         WaitingForToolUse toolUse = new WaitingForToolUse(map);
 
