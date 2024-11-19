@@ -24,9 +24,11 @@ public class PlayerResourcesAndFood {
      * For each resource R: if this resource is x times in list resources, this function checks if player has at least x
      * amount of resource R.
      *
-     * @param resources list of resources
+     * @param resources
+     *            list of resources
+     *
      * @return true if player has at least x of each resource R listed in resources (x is number of occurrences of R in
-     * resources).
+     *         resources).
      */
     public boolean hasResources(final Effect[] resources) {
         Map<Effect, Integer> amountToCheck = new HashMap<>();

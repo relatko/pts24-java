@@ -34,7 +34,7 @@ public class TribeFedStatus {
         }
 
         this.fields++;
-        playerResourcesAndFood.giveResources(new Effect[] { Effect.FIELD });
+        playerResourcesAndFood.giveResources(new Effect[] {Effect.FIELD});
     }
 
     /**
