@@ -45,12 +45,12 @@ public class PlayerResourcesAndFood {
     }
 
     /**
-     * Take resources listed in resources from player.
+     * Takes resources from the player's collection if they have the required quantity.
      *
      * @param resources
-     *            list of resources to be taken from board.
+     *            the array of resources to be taken from the player.
      *
-     * @return true - always. Something else should check if player can take resource.
+     * @return true if the resources were successfully taken, false otherwise.
      */
     public boolean takeResources(final Effect[] resources) {
         if (this.hasResources(resources)) {
@@ -63,12 +63,13 @@ public class PlayerResourcesAndFood {
     }
 
     /**
-     * Give resources to player.
+     * Adds the specified resources to the player's collection.
+
      *
      * @param resources
-     *            - list of resources listed in Effect.
+     *            the array of resources to be added.
      *
-     * @return true if player has at least one resource of each resource listed in resources.
+     * @return true if the resources were successfully added, false otherwise.
      */
     public boolean giveResources(final Effect[] resources) {
         for (Effect resource : resources) {
