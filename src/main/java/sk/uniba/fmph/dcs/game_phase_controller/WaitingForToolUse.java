@@ -1,4 +1,5 @@
 package sk.uniba.fmph.dcs.game_phase_controller;
+
 import sk.uniba.fmph.dcs.stone_age.ActionResult;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
@@ -11,21 +12,27 @@ import java.util.Map;
 
 public final class WaitingForToolUse implements InterfaceGamePhaseState {
     private final Map<PlayerOrder, InterfaceToolUse> interfaceToolUseCollection;
+
     public WaitingForToolUse(final Map<PlayerOrder, InterfaceToolUse> interfaceToolUseCollection) {
-        this.interfaceToolUseCollection = interfaceToolUseCollection; }
+        this.interfaceToolUseCollection = interfaceToolUseCollection;
+    }
 
     @Override
     public ActionResult placeFigures(final PlayerOrder player, final Location location, final int figuresCount) {
         return ActionResult.FAILURE;
     }
+
     @Override
-    public ActionResult makeAction(final PlayerOrder player, final Location location, final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
+    public ActionResult makeAction(final PlayerOrder player, final Location location,
+            final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
         return ActionResult.FAILURE;
     }
+
     @Override
     public ActionResult skipAction(final PlayerOrder player, final Location location) {
         return ActionResult.FAILURE;
     }
+
     @Override
     public ActionResult useTools(final PlayerOrder player, final int toolIndex) {
         if (interfaceToolUseCollection.get(player).useTool(toolIndex)) {
@@ -53,10 +60,12 @@ public final class WaitingForToolUse implements InterfaceGamePhaseState {
     public ActionResult doNotFeedThisTurn(final PlayerOrder player) {
         return ActionResult.FAILURE;
     }
+
     @Override
     public ActionResult makeAllPlayersTakeARewardChoice(final PlayerOrder player, final Effect reward) {
         return ActionResult.FAILURE;
     }
+
     @Override
     public HasAction tryToMakeAutomaticAction(final PlayerOrder player) {
         if (interfaceToolUseCollection.get(player) == null || !interfaceToolUseCollection.get(player).canUseTools()) {
