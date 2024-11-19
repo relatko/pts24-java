@@ -64,7 +64,6 @@ public class PlayerResourcesAndFood {
 
     /**
      * Adds the specified resources to the player's collection.
-
      *
      * @param resources
      *            the array of resources to be added.
