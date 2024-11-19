@@ -1,0 +1,29 @@
+Dobry den.
+
+Do javoveho repozitara som pridal slubenu implementaciu GamePhaseControllera. Gro prace urobil ChatGPT (preklad Python -> Java). Este som sa trochu pohral so strukturou projektu a vymenil som formatovac, kedze ten co tam bol mal problemy s prikazom switch.
+
+Zaroven som si vsimol prvu vec, na ktoru som v dizajne zabudol. Interface Building by malo obsahovat state. Predpokladam, ze takychto veci objavite pocas implementacie niekolko. Fix je samozrejme jednoduchy, pridat metodu do interfacu a implementovt ju v podtriedach. Moze to napr urobit ten, kto bude implementovat BuildingTile. Samozrjme, problem by sa dal vyriesit v BuildingTile, ale delegovat ho na implementaciu Building je rozhodne spravnejsie.
+
+Na zaver vas chcem upozrnit na rozsah projektu. Projekt je velky. Neda sa urobit za vecer, ani za dva. Pri rovnomernom rozdeleni uloh v ramci timu odhadujem narocnost projektu na 2-2.5md, t.j. 16-20 hodin, a to za predpokladu, ze viete co robite. V skutocnosti vam to bude trvat o cosi dlhsie. Taktiez, timova cast sa tyka viacerych a nie je optimalne to robit na poslednu chvilu, lebo niekto moze nebyt v kritickom case dostupny. Takze vam sil;no odporucam zacat pracovat uz teraz.
+
+Odporucany timeline na najblizsi tyzden:
+
+8.8. Nainstalovat si potrebne nastroje a overit, ze ste schopny pracovat s kodom.
+Vytvorte github konto. A overte, ze mate nainstalovane dostatocne nove verzie pythonu, mypy, autopep8, pylint / javy, mavena. Make nepotrebujete, staci sa inspirovat a pouzivat prikazy z neho. Forknite si repozitar, vytvorte si novu vetvu, kde urobite drobnu zmenu, napr. implementacia + test horeuvedenej chybajucej state() metody. Pushnite zmeny na svoj forknuty repozitar a overte, ze CI je zelena.
+
+11.8. Mate dohodnute timy, rozumiete hre a dizajnu.
+Dohodli ste sa ako budete na spolocnej casti projektu postupovat. To znamena, bud mat dohodnute kto co urobi, alebo mat dohodnuty system ako budete postupovat (samoorganizacia). Rozmyslajte aj nad tym ako budete kontrolovat, ci postupujete podla planu. Dohodite si sposob komunikacie.
+
+Aby som vam s pracou na projekte pomohol, budem pre ucely projektov dostupny v extra casoch. Mozete so mnou prist konzultovat lubovolne problemy suvisiace s projektom. Taktiez mozte tento cas vyuzit na to aby ste si v ramci timu dali updaty a upravili postup. Po vyucovani bude cas iba na zodpovedanie zopar vseobecnych otazok. Ale budem k dispozicii v pondelky a stvrtky. Vyuzite tieto terminy na vcasne vyriesenie problemov rozneho druhu.
+7.11. 13:10-14:50 F1-328
+11.11 14:00-15:30 F1-328
+14.11. 13:10-14:50 F1-328
+18.11 14:00-15:30 F1-328
+21.11. 13:10-14:50 F1-328
+25.11 14:00-15:30 F1-328
+28.11. 13:10-14:50 F1-328
+
+Robert Lukotka
+
+
+Správu z AiS2 odoslal: doc. RNDr. Robert Lukoťka, PhD.
