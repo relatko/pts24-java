@@ -64,6 +64,7 @@ public class PlayerResourcesAndFood {
 
     /**
      * Adds the specified resources to the player's collection.
+
      *
      * @param resources
      *            the array of resources to be added.
@@ -83,7 +84,9 @@ public class PlayerResourcesAndFood {
     public int numberOfResourcesForFinalPoints() {
         int ans = 0;
         for (Effect res : resources.keySet()) {
-            ans += res.points() * resources.get(res);
+            if (res.isResource()) {
+                ans += resources.get(res);
+            }
         }
         return ans;
     }
