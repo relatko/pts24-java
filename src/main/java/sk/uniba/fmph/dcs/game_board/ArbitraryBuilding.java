@@ -21,7 +21,8 @@ public class ArbitraryBuilding implements Building {
 
         int sum = 0;
         for (Effect resource : resources) {
-            if (!resource.isResource()) return OptionalInt.empty();
+            if (!resource.isResource())
+                return OptionalInt.empty();
             sum += resource.points();
         }
         return OptionalInt.of(sum);
