@@ -5,7 +5,7 @@ import sk.uniba.fmph.dcs.stone_age.EndOfGameEffect;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PlayerCivilisationCards {
+public final class PlayerCivilisationCards {
     private final Map<EndOfGameEffect, Integer> endOfGameEffects;
 
     public PlayerCivilisationCards() {
@@ -15,21 +15,20 @@ public class PlayerCivilisationCards {
         }
     }
 
-    public void addEndOfGameEffects(EndOfGameEffect[] effects) {
+    public void addEndOfGameEffects(final EndOfGameEffect[] effects) {
         // Integer in map represents effect count
         for (EndOfGameEffect effect : effects) {
             endOfGameEffects.put(effect, endOfGameEffects.get(effect) + 1);
         }
     }
 
-    public int calculateEndOfGameCivilisationCardPoints(int buildings, int tools, int fields, int figures) {
-        EndOfGameEffect[] greenBackground = { EndOfGameEffect.MEDICINE, EndOfGameEffect.ART, EndOfGameEffect.WRITING,
+    public int calculateEndOfGameCivilisationCardPoints(final int buildings, final int tools, final int fields, final int figures) {
+        EndOfGameEffect[] greenBackground = {EndOfGameEffect.MEDICINE, EndOfGameEffect.ART, EndOfGameEffect.WRITING,
                 EndOfGameEffect.POTTERY, EndOfGameEffect.SUNDIAL, EndOfGameEffect.TRANSPORT, EndOfGameEffect.MUSIC,
-                EndOfGameEffect.WEAVING };
+                EndOfGameEffect.WEAVING};
         int sum = 0;
 
         // go through green background cards, count layers (sets) and points for sets
-        boolean newLayer = true;
         int layer = 1;
         while (true) {
             int points = 0;
