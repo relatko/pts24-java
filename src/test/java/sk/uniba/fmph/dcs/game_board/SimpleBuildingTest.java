@@ -3,9 +3,10 @@ package sk.uniba.fmph.dcs.game_board;
 import java.util.ArrayList;
 import java.util.OptionalInt;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import sk.uniba.fmph.dcs.stone_age.Effect;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SimpleBuildingTest {
     @Test
@@ -15,11 +16,11 @@ public class SimpleBuildingTest {
 
         SimpleBuilding building = new SimpleBuilding(buildingResources);
 
-        Assertions.assertEquals(building.build(buildingResources), OptionalInt.of(3));
+        assertEquals(building.build(buildingResources), OptionalInt.of(3));
 
         ArrayList<Effect> otherResources = new ArrayList<Effect>();
         otherResources.add(Effect.WOOD);
         otherResources.add(Effect.WOOD);
-        Assertions.assertEquals(building.build(otherResources), OptionalInt.empty());
+        assertEquals(building.build(otherResources), OptionalInt.empty());
     }
 }
