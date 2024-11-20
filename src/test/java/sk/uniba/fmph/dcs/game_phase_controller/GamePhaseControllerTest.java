@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Collection;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.ActionResult;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.Effect;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class StateMock implements InterfaceGamePhaseState {
     List<ActionResult> expectedActionResults;
@@ -115,7 +116,7 @@ class GamePhaseControllerTest {
         String stateString = String.format("%s,%s/%s/%s", obj.getString("game phase"),
                 obj.getString("round starting player"), obj.getString("current_player"),
                 obj.getString("player taking a reward"));
-        Assertions.assertEquals(expectedString, stateString);
+        assertEquals(expectedString, stateString);
     }
 
     private void mockSetup(String description) {
@@ -201,168 +202,168 @@ class GamePhaseControllerTest {
 
     @Test
     public void testIncorrectPlayerTriedToTakeTurn() {
-        Assertions.assertFalse(placeFigures(1));
+        assertFalse(placeFigures(1));
         checkStateString("PLACE_FIGURES,0/0/None");
     }
 
     @Test
     public void testIncorrectPlayerOrderObjectFailure() {
 
-        Assertions.assertThrows(AssertionError.class, () -> placeFigures(0, 3));
+        assertThrows(AssertionError.class, () -> placeFigures(0, 3));
     }
 
     @Test
     public void testPlayersSwappingPlacingFigures() {
         mockSetup("pDW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
         checkStateString("PLACE_FIGURES,0/1/None");
 
         mockSetup("pDNW");
-        Assertions.assertTrue(placeFigures(1));
+        assertTrue(placeFigures(1));
         checkStateString("PLACE_FIGURES,0/1/None");
 
         mockSetup("pDNN mW");
-        Assertions.assertTrue(placeFigures(1));
+        assertTrue(placeFigures(1));
         checkStateString("MAKE_ACTION,0/0/None");
     }
 
     @Test
     public void testCorrectPlayerStartsMakingAction() {
         mockSetup("pDW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
         mockSetup("pDNN mW");
-        Assertions.assertTrue(placeFigures(1));
+        assertTrue(placeFigures(1));
         checkStateString("MAKE_ACTION,0/0/None");
     }
 
     @Test
     public void testPlayersSwappingMakingAction() {
         mockSetup("pDNN mW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
         checkStateString("MAKE_ACTION,0/0/None");
 
         mockSetup("mDW");
-        Assertions.assertTrue(makeAction(0));
+        assertTrue(makeAction(0));
         checkStateString("MAKE_ACTION,0/0/None");
 
         mockSetup("mF");
-        Assertions.assertFalse(makeAction(0));
+        assertFalse(makeAction(0));
         checkStateString("MAKE_ACTION,0/0/None");
 
         mockSetup("mDNW");
-        Assertions.assertTrue(makeAction(0));
+        assertTrue(makeAction(0));
         checkStateString("MAKE_ACTION,0/1/None");
 
         mockSetup("mDW");
-        Assertions.assertTrue(makeAction(1));
+        assertTrue(makeAction(1));
         checkStateString("MAKE_ACTION,0/1/None");
 
         mockSetup("mDNN fW");
-        Assertions.assertTrue(makeAction(1));
+        assertTrue(makeAction(1));
         checkStateString("FEED_TRIBE,0/0/None");
     }
 
     @Test
     public void testFeedTribeOnAndOutOfOrder() {
         mockSetup("pDNN mNN fW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
         checkStateString("FEED_TRIBE,0/0/None");
 
         mockSetup("fDW");
-        Assertions.assertTrue(feedTribe(1));
+        assertTrue(feedTribe(1));
         checkStateString("FEED_TRIBE,0/1/None");
 
         mockSetup("fDNAW");
-        Assertions.assertTrue(feedTribe(1));
+        assertTrue(feedTribe(1));
         checkStateString("FEED_TRIBE,0/0/None");
     }
 
     @Test
     public void testNextTurn() {
         mockSetup("pDNN mNN fNN nA pW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
         checkStateString("PLACE_FIGURES,1/1/None");
     }
 
     @Test
     public void testGameEnd() {
         mockSetup("pDNN mNN fNN nN gW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
         checkStateString("GAME_END,0/0/None");
     }
 
     @Test
     public void testToolUseForcedStop() {
         mockSetup("pDNN mW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
 
         mockSetup("mT wW"); // make action - WAITING_FOR_TOOL_USE
-        Assertions.assertTrue(makeAction(0));
+        assertTrue(makeAction(0));
         checkStateString("WAITING_FOR_TOOL_USE,0/0/None");
 
         mockSetup("wF");
-        Assertions.assertFalse(useTools(0));
+        assertFalse(useTools(0));
         checkStateString("WAITING_FOR_TOOL_USE,0/0/None");
 
         mockSetup("wDW");
-        Assertions.assertTrue(useTools(0));
+        assertTrue(useTools(0));
         checkStateString("WAITING_FOR_TOOL_USE,0/0/None");
 
         mockSetup("wDN mW");
-        Assertions.assertTrue(useTools(0));
+        assertTrue(useTools(0));
         checkStateString("MAKE_ACTION,0/0/None");
     }
 
     @Test
     public void testToolUseDecidedToStop() {
         mockSetup("pDNN mNW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
         checkStateString("MAKE_ACTION,0/1/None");
 
         mockSetup("mT wW");
-        Assertions.assertTrue(makeAction(1));
+        assertTrue(makeAction(1));
         checkStateString("WAITING_FOR_TOOL_USE,0/1/None");
 
         mockSetup("wDW");
-        Assertions.assertTrue(useTools(1));
+        assertTrue(useTools(1));
         checkStateString("WAITING_FOR_TOOL_USE,0/1/None");
 
         mockSetup("wD mW"); // done no more tools
-        Assertions.assertTrue(noMoreToolsThisThrow(1));
+        assertTrue(noMoreToolsThisThrow(1));
         checkStateString("MAKE_ACTION,0/1/None");
     }
 
     @Test
     public void testAllPlayersTakeAReward() {
         mockSetup("pDNN mNW");
-        Assertions.assertTrue(placeFigures(0));
+        assertTrue(placeFigures(0));
         checkStateString("MAKE_ACTION,0/1/None");
 
         mockSetup("mR aW");
-        Assertions.assertTrue(makeAction(1));
+        assertTrue(makeAction(1));
         checkStateString("ALL_PLAYERS_TAKE_A_REWARD,0/1/1");
 
         mockSetup("aF");
-        Assertions.assertFalse(makeAllPlayersTakeARewardChoice(1));
+        assertFalse(makeAllPlayersTakeARewardChoice(1));
         checkStateString("ALL_PLAYERS_TAKE_A_REWARD,0/1/1");
 
-        Assertions.assertFalse(makeAllPlayersTakeARewardChoice(0));
+        assertFalse(makeAllPlayersTakeARewardChoice(0));
         checkStateString("ALL_PLAYERS_TAKE_A_REWARD,0/1/1");
 
         mockSetup("aDW");
-        Assertions.assertTrue(makeAllPlayersTakeARewardChoice(1));
+        assertTrue(makeAllPlayersTakeARewardChoice(1));
         checkStateString("ALL_PLAYERS_TAKE_A_REWARD,0/1/0");
 
         mockSetup("aDW");
-        Assertions.assertTrue(makeAllPlayersTakeARewardChoice(0));
+        assertTrue(makeAllPlayersTakeARewardChoice(0));
         checkStateString("ALL_PLAYERS_TAKE_A_REWARD,0/1/1");
 
         mockSetup("aDAW");
-        Assertions.assertTrue(makeAllPlayersTakeARewardChoice(1));
+        assertTrue(makeAllPlayersTakeARewardChoice(1));
         checkStateString("ALL_PLAYERS_TAKE_A_REWARD,0/1/1");
 
         mockSetup("aDN mW");
-        Assertions.assertTrue(makeAllPlayersTakeARewardChoice(1));
+        assertTrue(makeAllPlayersTakeARewardChoice(1));
         checkStateString("MAKE_ACTION,0/1/None");
     }
 }
