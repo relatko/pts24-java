@@ -1,6 +1,6 @@
 package sk.uniba.fmph.dcs.game_board;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 
 import java.util.ArrayList;

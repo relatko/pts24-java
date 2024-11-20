@@ -1,11 +1,10 @@
 package sk.uniba.fmph.dcs.game_board;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.OptionalInt;
-import org.junit.Test;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 
 public class SimpleBuildingTest {
@@ -16,11 +15,11 @@ public class SimpleBuildingTest {
 
         SimpleBuilding building = new SimpleBuilding(buildingResources);
 
-        assertEquals(building.build(buildingResources), OptionalInt.of(3));
+        Assertions.assertEquals(building.build(buildingResources), OptionalInt.of(3));
 
         ArrayList<Effect> otherResources = new ArrayList<Effect>();
         otherResources.add(Effect.WOOD);
         otherResources.add(Effect.WOOD);
-        assertEquals(building.build(otherResources), OptionalInt.empty());
+        Assertions.assertEquals(building.build(otherResources), OptionalInt.empty());
     }
 }
