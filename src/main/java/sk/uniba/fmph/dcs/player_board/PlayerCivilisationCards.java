@@ -22,7 +22,8 @@ public final class PlayerCivilisationCards {
         }
     }
 
-    public int calculateEndOfGameCivilisationCardPoints(final int buildings, final int tools, final int fields, final int figures) {
+    public int calculateEndOfGameCivilisationCardPoints(final int buildings, final int tools, final int fields,
+            final int figures) {
         EndOfGameEffect[] greenBackground = {EndOfGameEffect.MEDICINE, EndOfGameEffect.ART, EndOfGameEffect.WRITING,
                 EndOfGameEffect.POTTERY, EndOfGameEffect.SUNDIAL, EndOfGameEffect.TRANSPORT, EndOfGameEffect.MUSIC,
                 EndOfGameEffect.WEAVING};
