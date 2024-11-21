@@ -6,7 +6,7 @@ public final class PlayerTools {
 
     private int[] tools = {0, 0, 0};
     private final int baseToolsNumber = 3;
-    private boolean[] usedTools = {false, false, false};
+    private final boolean[] usedTools = {false, false, false};
 
     public void newTurn() {
         Arrays.fill(usedTools, false);
