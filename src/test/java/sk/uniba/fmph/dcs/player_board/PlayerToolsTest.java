@@ -3,6 +3,7 @@ package sk.uniba.fmph.dcs.player_board;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerToolsTest {
     private PlayerTools playerTools;
@@ -25,11 +26,12 @@ public class PlayerToolsTest {
 
         // Second tool should increment tools[0] again as it's still the smallest
         playerTools.addTool();
-        assertEquals("All tools: 2 0 0Available tools: 2 0 0", playerTools.state());
+        assertEquals("All tools: 1 1 0Available tools: 1 1 0", playerTools.state());
 
         // Third tool should increment tools[1] as tools[0] is now larger
         playerTools.addTool();
-        assertEquals("All tools: 2 1 0Available tools: 2 1 0", playerTools.state());
+        playerTools.addTool();
+        assertEquals("All tools: 2 1 1Available tools: 2 1 1", playerTools.state());
     }
 
     @Test
@@ -42,19 +44,19 @@ public class PlayerToolsTest {
     void testUseTool() {
         // Add some tools first
         playerTools.addTool(); // adds to tools[0]
-        playerTools.addTool(); // adds to tools[0] again
+        playerTools.addTool(); // adds to tools[1]
         playerTools.addSingleUseTool(3); // adds single-use tool
 
         // Use permanent tool
         int result = playerTools.useTool(0);
-        assertEquals(2, result);
-        assertTrue(playerTools.state().contains("All tools: 2 0 0 3"));
+        assertEquals(1, result);
+        assertEquals("All tools: 1 1 0 3Available tools: 1 0 3", playerTools.state());
 
         // Use single-use tool
         result = playerTools.useTool(3);
         assertEquals(3, result);
         // Single-use tool should be removed
-        assertEquals("All tools: 2 0 0Available tools: 2 0 0", playerTools.state());
+        assertEquals("All tools: 1 1 0Available tools: 1 0", playerTools.state());
     }
 
     @Test
@@ -76,7 +78,7 @@ public class PlayerToolsTest {
 
         // Add some tools
         playerTools.addTool(); // adds 1 to tools[0]
-        playerTools.addTool(); // adds 1 to tools[0]
+        playerTools.addTool(); // adds 1 to tools[1]
         playerTools.addSingleUseTool(3); // adds single-use tool with strength 3
 
         // Total available strength is 5 (2 from permanent tool + 3 from single-use)
@@ -84,6 +86,7 @@ public class PlayerToolsTest {
 
         // Use permanent tool
         playerTools.useTool(0);
+        playerTools.useTool(1);
         // Now only 3 strength available (from single-use tool)
         assertFalse(playerTools.hasSufficientTools(4));
         assertTrue(playerTools.hasSufficientTools(2));
@@ -92,13 +95,13 @@ public class PlayerToolsTest {
     @Test
     void testUsedToolsTracking() {
         playerTools.addTool(); // adds to tools[0]
-        playerTools.addTool(); // adds to tools[0] again
+        playerTools.addTool(); // adds to tools[1]
 
         // Use first tool
         playerTools.useTool(0);
         String state = playerTools.state();
         // Tool should appear in All tools but not in Available tools
-        assertTrue(state.contains("All tools: 2 0 0"));
-        assertFalse(state.contains("Available tools: 2"));
+        assertTrue(state.contains("All tools: 1 1 0"));
+        assertFalse(state.contains("Available tools: 1 1"));
     }
 }

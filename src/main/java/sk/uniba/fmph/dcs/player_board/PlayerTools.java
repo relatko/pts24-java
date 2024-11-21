@@ -2,9 +2,10 @@ package sk.uniba.fmph.dcs.player_board;
 
 import java.util.Arrays;
 
-public class PlayerTools {
+public final class PlayerTools {
 
     private int[] tools = {0, 0, 0};
+    private final int baseToolsNumber = 3;
     private boolean[] usedTools = {false, false, false};
 
     public void newTurn() {
@@ -21,16 +22,16 @@ public class PlayerTools {
         }
     }
 
-    public void addSingleUseTool(int strength) {
+    public void addSingleUseTool(final int strength) {
         tools = Arrays.copyOf(tools, tools.length + 1);
         tools[tools.length - 1] = strength;
     }
 
-    public int useTool(int index) {
+    public int useTool(final int index) {
         // get the result
         int result = tools[index];
         // Tag the tool as used
-        if (index < 3) {
+        if (index < baseToolsNumber) {
             usedTools[index] = true;
         } else {
             // Spend the one time tool and remove it from the tools array
@@ -45,13 +46,13 @@ public class PlayerTools {
         return result;
     }
 
-    public boolean hasSufficientTools(int goal) {
+    public boolean hasSufficientTools(final int goal) {
         int sum = 0;
 
         // count the sum of all available tools
         for (int i = 0; i < tools.length; i++) {
             // if the tool is used, do not count it
-            if (i < 3 && usedTools[i]) {
+            if (i < baseToolsNumber && usedTools[i]) {
                 continue;
             }
             sum += tools[i];
@@ -70,7 +71,7 @@ public class PlayerTools {
         // Available tools: tools[0] tools[3] ...
         stringBuilder.append("Available tools:");
         for (int i = 0; i < tools.length; i++) {
-            if (i < 3 && usedTools[i]) {
+            if (i < baseToolsNumber && usedTools[i]) {
                 continue;
             }
             stringBuilder.append(" ").append(tools[i]);
