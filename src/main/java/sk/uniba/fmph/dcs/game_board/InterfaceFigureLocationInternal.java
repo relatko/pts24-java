@@ -7,12 +7,12 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import java.util.Collection;
 
 public interface InterfaceFigureLocationInternal {
-    Boolean placeFigures(Player player, Integer figureCount);
-    HasAction tryToPlaceFigures(Player player, Integer count);
+    boolean placeFigures(Player player, int figureCount);
+    HasAction tryToPlaceFigures(Player player, int count);
     ActionResult makeAction(Player player, Collection<Effect> inputResources,
                             Collection<Effect> outputResources);
-    Boolean skipAction(Player player);
+    boolean skipAction(Player player);
     HasAction tryToMakeAction(Player player);
-    Boolean newTurn(); //returns true if end of game is implied by
+    boolean newTurn(); //returns true if end of game is implied by
                         //given location
 }
