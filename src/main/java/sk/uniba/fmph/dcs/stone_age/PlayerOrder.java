@@ -17,7 +17,7 @@ public final class PlayerOrder {
         return players;
     }
 
-    public PlayerOrder forward() {
+    public PlayerOrder next() {
         int forward = (this.order + 1) % this.players;
         return new PlayerOrder(forward, this.players);
     }
