@@ -44,27 +44,6 @@ public class ToolMakerHutFields {
         return true;
     }
 
-    public boolean placeOnToolMaker(Player player)
-    {
-        if(canPlaceOnToolMaker(player)){
-            player.getPlayerBoard().takeFigures(1);
-            toolMakerFigures = player.getPlayerOrder();
-            return true;
-        }
-        return false;
-    }
-    public boolean actionToolMaker(Player player){
-        if (toolMakerFigures.equals(player.getPlayerOrder())) {
-            Collection<Effect> newTool = new ArrayList<Effect>();
-            newTool.add(Effect.TOOL);
-            player.getPlayerBoard().giveEffect(newTool);
-            toolMakerFigures = null;
-            return true;
-        }
-        return false;
-    }
-
-
     public boolean canPlaceOnToolMaker(Player player){
         if(!checkRestriction())
             return false;
@@ -78,6 +57,32 @@ public class ToolMakerHutFields {
         }
         return false;
     }
+
+    public boolean placeOnToolMaker(Player player)
+    {
+        if(canPlaceOnToolMaker(player)){
+            player.getPlayerBoard().takeFigures(1);
+            toolMakerFigures = player.getPlayerOrder();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean canActionOnToolMaker(Player player){
+        return toolMakerFigures.equals(player.getPlayerOrder());
+    }
+
+    public boolean actionToolMaker(Player player){
+        if (canActionOnToolMaker(player)) {
+            Collection<Effect> newTool = new ArrayList<Effect>();
+            newTool.add(Effect.TOOL);
+            player.getPlayerBoard().giveEffect(newTool);
+            toolMakerFigures = null;
+            return true;
+        }
+        return false;
+    }
+
     public boolean actionHut(Player player){
         if (hutFigures.equals(player.getPlayerOrder())) {
             player.getPlayerBoard().giveFigure();
@@ -99,6 +104,7 @@ public class ToolMakerHutFields {
         }
         return false;
     }
+
     public boolean actionFields(Player player){
         if (fieldsFigures.equals(player.getPlayerOrder())) {
             Collection<Effect> newField = new ArrayList<Effect>();

@@ -13,6 +13,6 @@ public interface InterfaceFigureLocationInternal {
                             Collection<Effect> outputResources);
     boolean skipAction(Player player);
     HasAction tryToMakeAction(Player player);
-    boolean newTurn(); //returns true if end of game is implied by
+    boolean newTurn(); //returns true if end of round is implied by
                         //given location
 }
