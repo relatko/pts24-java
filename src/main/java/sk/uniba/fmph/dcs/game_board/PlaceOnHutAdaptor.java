@@ -1,22 +1,21 @@
 package sk.uniba.fmph.dcs.game_board;
 
-import org.apache.commons.lang3.NotImplementedException;
 import sk.uniba.fmph.dcs.stone_age.ActionResult;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 
 import java.util.Collection;
 
-public class PlaceOnToolMaker implements InterfaceFigureLocationInternal{
+public class PlaceOnHutAdaptor implements InterfaceFigureLocationInternal{
     private ToolMakerHutFields tmhf;
 
-    public PlaceOnToolMaker(ToolMakerHutFields tmhf) {
+    public PlaceOnHutAdaptor(ToolMakerHutFields tmhf) {
         this.tmhf = tmhf;
     }
 
     @Override
     public boolean placeFigures(Player player, int figureCount){
-        return figureCount == 1 && tmhf.canPlaceOnToolMaker(player);
+        return figureCount == 2 && tmhf.canPlaceOnHut(player);
     }
 
     @Override
@@ -28,7 +27,7 @@ public class PlaceOnToolMaker implements InterfaceFigureLocationInternal{
 
     @Override
     public ActionResult makeAction(Player player, Collection<Effect> inputResources,
-                            Collection<Effect> outputResources)
+                                   Collection<Effect> outputResources)
     {
         if(tryToMakeAction(player) == HasAction.WAITING_FOR_PLAYER_ACTION && tmhf.actionToolMaker(player))
             return ActionResult.ACTION_DONE;
@@ -38,14 +37,14 @@ public class PlaceOnToolMaker implements InterfaceFigureLocationInternal{
 
     @Override
     public HasAction tryToMakeAction(Player player){
-        if (tmhf.canActionOnToolMaker(player))
+        if (tmhf.canActionOnHut(player))
             return HasAction.WAITING_FOR_PLAYER_ACTION;
         return HasAction.NO_ACTION_POSSIBLE;
     }
 
     @Override
     public boolean skipAction(Player player){
-        return tmhf.skipActionOnToolMaker(player);
+        return tmhf.skipActionOnHut(player);
     }
 
     @Override
