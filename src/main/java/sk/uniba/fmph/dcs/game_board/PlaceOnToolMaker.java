@@ -35,6 +35,7 @@ public class PlaceOnToolMaker implements InterfaceFigureLocationInternal{
         return ActionResult.FAILURE;
     }
 
+
     @Override
     public HasAction tryToMakeAction(Player player){
         if (tmhf.canActionOnToolMaker(player))
@@ -42,13 +43,13 @@ public class PlaceOnToolMaker implements InterfaceFigureLocationInternal{
         return HasAction.NO_ACTION_POSSIBLE;
     }
 
+    @Override
     public boolean skipAction(Player player){
-        throw new NotImplementedException("Skip action not implemented");
+        return tmhf.skipActionOnToolMaker(player);
     }
 
-
-    public boolean newTurn() //returns true if end of round is implied by
-                        //given location
+    @Override
+    public boolean newTurn()
     {
         return tmhf.newTurn();
     }

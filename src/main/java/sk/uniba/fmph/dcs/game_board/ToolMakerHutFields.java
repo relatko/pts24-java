@@ -25,7 +25,7 @@ public class ToolMakerHutFields {
         fieldsFigures = null;
     }
 
-    private boolean checkRestriction()
+    private boolean checkRestrictions()
     {
         if(this.restriction == MAX_PL)
             return true;
@@ -45,17 +45,9 @@ public class ToolMakerHutFields {
     }
 
     public boolean canPlaceOnToolMaker(Player player){
-        if(!checkRestriction())
+        if(!checkRestrictions())
             return false;
         return toolMakerFigures == null && player.getPlayerBoard().hasFigures(1);
-    }
-    public boolean placeOnHut(Player figures){
-        if(canPlaceOnHut(figures)){
-            figures.getPlayerBoard().takeFigures(2);
-            hutFigures = figures.getPlayerOrder();
-            return true;
-        }
-        return false;
     }
 
     public boolean placeOnToolMaker(Player player)
@@ -83,6 +75,34 @@ public class ToolMakerHutFields {
         return false;
     }
 
+    public boolean skipActionOnToolMaker(Player player){
+        if (canActionOnToolMaker(player)) {
+            player.getPlayerBoard().giveFigure();
+            toolMakerFigures = null;
+            return true;
+        }
+        return false;
+    }
+
+    boolean canPlaceOnHut(Player player){
+        if(!checkRestrictions())
+            return false;
+        return hutFigures == null  && player.getPlayerBoard().hasFigures(2);
+    }
+
+    public boolean placeOnHut(Player figures){
+        if(canPlaceOnHut(figures)){
+            figures.getPlayerBoard().takeFigures(2);
+            hutFigures = figures.getPlayerOrder();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean canActionOnHut(Player player){
+        return hutFigures.equals(player.getPlayerOrder());
+    }
+
     public boolean actionHut(Player player){
         if (hutFigures.equals(player.getPlayerOrder())) {
             player.getPlayerBoard().giveFigure();
@@ -91,11 +111,17 @@ public class ToolMakerHutFields {
         }
         return false;
     }
-    boolean canPlaceOnHut(Player player){
-        if(!checkRestriction())
-            return false;
-        return hutFigures == null  && player.getPlayerBoard().hasFigures(2);
+
+    public boolean skipActionOnHut(Player player){
+        if (canActionOnHut(player)) {
+            player.getPlayerBoard().giveFigure();
+            player.getPlayerBoard().giveFigure();
+            hutFigures = null;
+            return true;
+        }
+        return false;
     }
+
     public boolean placeOnFields(Player player){
         if(canPlaceOnFields(player)){
             player.getPlayerBoard().takeFigures(1);
@@ -103,6 +129,17 @@ public class ToolMakerHutFields {
             return true;
         }
         return false;
+    }
+
+    public boolean canPlaceOnFields(Player player)
+    {
+        if(!checkRestrictions())
+            return false;
+        return fieldsFigures == null  && player.getPlayerBoard().hasFigures(1);
+    }
+
+    public boolean canActionOnFields(Player player){
+        return toolMakerFigures.equals(player.getPlayerOrder());
     }
 
     public boolean actionFields(Player player){
@@ -115,12 +152,16 @@ public class ToolMakerHutFields {
         }
         return false;
     }
-    public boolean canPlaceOnFields(Player player)
-    {
-        if(!checkRestriction())
-            return false;
-        return fieldsFigures == null  && player.getPlayerBoard().hasFigures(1);
+
+    public boolean skipActionOnFields(Player player){
+        if (canActionOnFields(player)) {
+            player.getPlayerBoard().giveFigure();
+            fieldsFigures = null;
+            return true;
+        }
+        return false;
     }
+
     public boolean newTurn(){
         return toolMakerFigures == null && hutFigures == null && fieldsFigures == null;
     }
