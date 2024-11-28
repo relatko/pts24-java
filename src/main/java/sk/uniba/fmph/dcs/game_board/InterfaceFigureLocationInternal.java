@@ -11,7 +11,8 @@ public interface InterfaceFigureLocationInternal {
     HasAction tryToPlaceFigures(Player player, int count);
     ActionResult makeAction(Player player, Collection<Effect> inputResources,
                             Collection<Effect> outputResources);
-    boolean skipAction(Player player);
+    boolean skipAction(Player player); // returns true if player had his figures
+                                        // on location which method withdrew
     HasAction tryToMakeAction(Player player);
     boolean newTurn(); //returns true if end of game is implied by
                         //given location

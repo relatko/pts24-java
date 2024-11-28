@@ -6,6 +6,7 @@ import java.util.OptionalInt;
 public interface InterfacePlayerBoardGameBoard {
     void giveEffect(Collection<Effect> stuff);
     void giveEndOfGameEffect(Collection<EndOfGameEffect> stuff);
+    void giveFigure();
     boolean takeResources(Collection<Effect> stuff);
     boolean takeFigures(int count);
     boolean hasFigures(int count);
