@@ -1,4 +1,4 @@
-package sk.uniba.fmph.dcs.stone_age;
+package sk.uniba.fmph.dcs.player_board;
 
 import javax.tools.Tool;
 import java.util.ArrayList;
@@ -58,14 +58,14 @@ public class PlayerTools {
         return sum;
     }
     public String state(){
-        String state = "";
+        StringBuilder state = new StringBuilder();
         for(int i=0;i<6;i++){
             if(tools[i]>0){
                 String type = (i<3) ? "" : "SingleUse";
-                state+=type+"Tool, index: "+i+", strength: "+tools[i]+", used: "+used[i]+'\n';
+                state.append(type).append("Tool, index: ").append(i).append(", strength: ").append(tools[i]).append(", used: ").append(used[i]).append('\n');
             }
         }
-        return state;
+        return state.toString();
     }
 
 }
