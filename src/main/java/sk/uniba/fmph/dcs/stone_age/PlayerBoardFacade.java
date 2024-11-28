@@ -76,4 +76,8 @@ public class PlayerBoardFacade implements InterfacePlayerBoardGameBoard,Interfac
         }
         return false;
     }
+    @Override
+    public void giveFigure(){
+        playerBoard.playerFig.addNewFigure();
+    }
 }

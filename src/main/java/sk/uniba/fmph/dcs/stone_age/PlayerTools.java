@@ -39,17 +39,16 @@ public class PlayerTools {
         }
     }
     public OptionalInt useTool(int i){
-        if(used[i])
+        if(used[i]||tools[i]==0)
             return OptionalInt.empty();
         if(i<3){
             used[i]=true;
             return OptionalInt.of(tools[i]);
         }
-        if(tools[i]==0)
-            return OptionalInt.empty();
         OptionalInt val = OptionalInt.of(tools[i]);
         for(int j=i;j<5;j++)
             tools[j]=tools[j+1];
+        tools[5] = 0;
         return val;
     }
     public int getTools() {
