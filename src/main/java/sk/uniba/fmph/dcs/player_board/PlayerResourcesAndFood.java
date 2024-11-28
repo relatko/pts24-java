@@ -1,4 +1,6 @@
-package sk.uniba.fmph.dcs.stone_age;
+package sk.uniba.fmph.dcs.player_board;
+
+import sk.uniba.fmph.dcs.stone_age.Effect;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -55,12 +57,12 @@ public class PlayerResourcesAndFood {
         resources.put(Effect.FOOD,0);
     }
     public String state(){
-        String state = "Number of resources:\n";
+        StringBuilder state = new StringBuilder("Number of resources:\n");
         for(Effect effect: resources.keySet()){
             if(resources.get(effect)>0){
-                state+=effect.name()+" : "+resources.get(effect)+'\n';
+                state.append(effect.name()).append(" : ").append(resources.get(effect)).append('\n');
             }
         }
-        return state;
+        return state.toString();
     }
 }

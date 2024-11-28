@@ -1,4 +1,4 @@
-package sk.uniba.fmph.dcs.stone_age;
+package sk.uniba.fmph.dcs.player_board;
 
 public class PlayerFigures {
     private int totalFigures;

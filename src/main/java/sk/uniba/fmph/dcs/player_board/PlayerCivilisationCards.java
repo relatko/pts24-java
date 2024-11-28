@@ -1,4 +1,6 @@
-package sk.uniba.fmph.dcs.stone_age;
+package sk.uniba.fmph.dcs.player_board;
+
+import sk.uniba.fmph.dcs.stone_age.EndOfGameEffect;
 
 import java.util.*;
 
@@ -34,12 +36,12 @@ public class PlayerCivilisationCards {
         return points;
     }
     public String state(){
-        String state = "Number of EndGameEffects:\n";
+        StringBuilder state = new StringBuilder("Number of EndGameEffects:\n");
         for(EndOfGameEffect effect: endEffects.keySet()){
             if(endEffects.get(effect)>0){
-                state+=effect.name()+" : "+endEffects.get(effect)+'\n';
+                state.append(effect.name()).append(" : ").append(endEffects.get(effect)).append('\n');
             }
         }
-        return state;
+        return state.toString();
     }
 }
