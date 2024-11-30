@@ -2,12 +2,9 @@ package sk.uniba.fmph.dcs.game_board;
 
 import sk.uniba.fmph.dcs.stone_age.Effect;
 
-import java.util.ArrayList;
-
 public class GetChoice implements EvaluateCivilisationCardImmediateEffect {
 
     private int numberOfResources;
-    private ArrayList<Effect> list;
 
     /**
      *
