@@ -44,7 +44,7 @@ public class PlayerBoardFacade implements InterfacePlayerBoardGameBoard,Interfac
     }
     @Override
     public boolean hasSufficientTools(int goal){
-        return true;
+        return playerBoard.playerT.hasSufficientTools(goal);
     }
     @Override
     public OptionalInt useTool(int idx){

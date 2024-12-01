@@ -51,6 +51,13 @@ public class PlayerTools {
         tools[5] = 0;
         return val;
     }
+    public boolean hasSufficientTools(int goal){
+        int sum = 0;
+        for(int i=0;i<6;i++)
+            if(!used[i])
+                sum+=tools[i];
+        return sum>=goal;
+    }
     public int getTools() {
         int sum = 0;
         for(int i=0;i<6;i++)
