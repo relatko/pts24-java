@@ -61,9 +61,9 @@ public final class TribeFedStatus {
     }
 
     public String state() {
-        return "Tribe fed: " +
-                tribeFed +
-                "; Fields count: " +
-                fields;
+        return "Tribe fed: "
+                + tribeFed
+                + "; Fields count: "
+                + fields;
     }
 }
