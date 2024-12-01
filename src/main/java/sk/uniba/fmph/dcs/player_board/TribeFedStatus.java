@@ -4,13 +4,14 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 
 import java.util.Arrays;
 
-public class TribeFedStatus {
+public final class TribeFedStatus {
     private boolean tribeFed;
     private int fields;
+    private final int maxFields = 10;
     private final PlayerFigures playerFigures;
     private final PlayerResourcesAndFood playerResourcesAndFood;
 
-    public TribeFedStatus (final PlayerFigures playerFigures, final PlayerResourcesAndFood playerResourcesAndFood) {
+    public TribeFedStatus(final PlayerFigures playerFigures, final PlayerResourcesAndFood playerResourcesAndFood) {
         this.playerFigures = playerFigures;
         this.playerResourcesAndFood = playerResourcesAndFood;
         fields = 0;
@@ -18,7 +19,7 @@ public class TribeFedStatus {
     }
 
     public void addField() {
-        if (fields < 10) {
+        if (fields < maxFields) {
             fields++;
         }
     }
@@ -27,10 +28,10 @@ public class TribeFedStatus {
         tribeFed = false;
     }
 
-    public boolean feedTribeIfEnoughFood(){
+    public boolean feedTribeIfEnoughFood() {
 
         boolean isEnoughFood = false;
-        int foodToSpend = playerFigures.getTotalFigures() * 2 - fields;
+        int foodToSpend = Math.max(playerFigures.getTotalFigures() - fields, 0);
         Effect[] food = new Effect[foodToSpend];
         Arrays.fill(food, Effect.FOOD);
 
@@ -41,8 +42,12 @@ public class TribeFedStatus {
     }
 
     public boolean feedTribe(final Effect[] resources) {
-        playerResourcesAndFood.takeResources(resources);
-        tribeFed = true;
+        if (playerFigures.getTotalFigures() - fields > resources.length) {
+            return false;
+        }
+        if (playerResourcesAndFood.takeResources(resources)) {
+            tribeFed = true;
+        }
         return tribeFed;
     }
 
@@ -56,6 +61,11 @@ public class TribeFedStatus {
     }
 
     public String state() {
-        return "";
+        String stringBuilder = "Tribe fed: " +
+                tribeFed +
+                "; Fields count: " +
+                fields;
+
+        return stringBuilder;
     }
 }
