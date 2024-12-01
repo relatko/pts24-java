@@ -52,19 +52,19 @@ public final class GamePhaseController implements InterfaceGamePhaseController {
         switch (gamePhase) {
             case PLACE_FIGURES:
             case FEED_TRIBE:
-                currentPlayer = currentPlayer.forward();
+                currentPlayer = currentPlayer.next();
                 break;
             case MAKE_ACTION:
             case WAITING_FOR_TOOL_USE:
                 break;
             case ALL_PLAYERS_TAKE_A_REWARD:
                 if (currentPlayerTakingReward.isPresent()) {
-                    currentPlayerTakingReward = Optional.of(currentPlayerTakingReward.get().forward());
+                    currentPlayerTakingReward = Optional.of(currentPlayerTakingReward.get().next());
                 }
                 break;
             case NEW_ROUND:
                 gamePhase = GamePhase.PLACE_FIGURES;
-                roundStartingPlayer = roundStartingPlayer.forward();
+                roundStartingPlayer = roundStartingPlayer.next();
                 currentPlayer = roundStartingPlayer;
                 break;
             case GAME_END:
@@ -78,7 +78,7 @@ public final class GamePhaseController implements InterfaceGamePhaseController {
             case PLACE_FIGURES:
             case FEED_TRIBE:
             case MAKE_ACTION:
-                currentPlayer = currentPlayer.forward();
+                currentPlayer = currentPlayer.next();
                 break;
             case ALL_PLAYERS_TAKE_A_REWARD:
             case WAITING_FOR_TOOL_USE:
