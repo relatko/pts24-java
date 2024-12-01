@@ -59,8 +59,8 @@ public class WaitingForToolUseStateTest {
         PlayerOrder player1 = new PlayerOrder(1, 1);
         PlayerOrder player2 = new PlayerOrder(2, 2);
 
-        map.put(player1, new ToolUseMock(false, false, false)); // finishUsingToolsExpected = false
-        map.put(player2, new ToolUseMock(false, false, true)); // finishUsingToolsExpected = true
+        map.put(player1, new ToolUseMock(false, false, false));
+        map.put(player2, new ToolUseMock(false, false, true));
         WaitingForToolUseState toolUse = new WaitingForToolUseState(map);
 
         assertEquals(toolUse.noMoreToolsThisThrow(player1), ActionResult.FAILURE);
