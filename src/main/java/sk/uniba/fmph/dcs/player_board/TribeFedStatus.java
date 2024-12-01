@@ -29,25 +29,25 @@ public final class TribeFedStatus {
     }
 
     public boolean feedTribeIfEnoughFood() {
-
-        boolean isEnoughFood = false;
         int foodToSpend = Math.max(playerFigures.getTotalFigures() - fields, 0);
         Effect[] food = new Effect[foodToSpend];
         Arrays.fill(food, Effect.FOOD);
 
-        if (playerResourcesAndFood.hasResources(food)) {
-            return feedTribe(food);
+        if (!playerResourcesAndFood.hasResources(food)) {
+            return false;
         }
-        return false;
+        return feedTribe(food);
     }
 
     public boolean feedTribe(final Effect[] resources) {
-        if (playerFigures.getTotalFigures() - fields > resources.length) {
+        if (playerFigures.getTotalFigures() - fields != resources.length) {
             return false;
         }
-        if (playerResourcesAndFood.takeResources(resources)) {
-            tribeFed = true;
+        boolean result = playerResourcesAndFood.takeResources(resources);
+        if (!result) {
+            return false;
         }
+        tribeFed = true;
         return tribeFed;
     }
 

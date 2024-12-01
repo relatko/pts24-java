@@ -12,8 +12,8 @@ public class TribeFedStatusTest {
     @BeforeEach
     void setUp() {
         PlayerResourcesAndFood playerResourcesAndFood = new PlayerResourcesAndFood();
-        Effect[] baseResources = {Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD,
-                Effect.WOOD, Effect.CLAY, Effect.STONE, Effect.GOLD};
+        // Starting resources: 12 food, 1 wood, 1 clay, 1 stone, 1 gold
+        Effect[] baseResources = {Effect.WOOD, Effect.CLAY, Effect.STONE, Effect.GOLD};
         playerResourcesAndFood.giveResources(baseResources);
 
         this.tribeFedStatus = new TribeFedStatus(new PlayerFigures(), playerResourcesAndFood);
@@ -51,12 +51,14 @@ public class TribeFedStatusTest {
 
     @Test
     void testFeedTribeIfEnoughFood() {
-        assertTrue(tribeFedStatus.feedTribeIfEnoughFood());
+        assertTrue(tribeFedStatus.feedTribeIfEnoughFood()); // 7 food left
 
         tribeFedStatus.newTurn();
-        assertEquals(tribeFedStatus.state(), "Tribe fed: false; Fields count: 0");
-        tribeFedStatus.feedTribeIfEnoughFood();
-        assertEquals(tribeFedStatus.state(), "Tribe fed: false; Fields count: 0");
+        tribeFedStatus.feedTribeIfEnoughFood(); // 2 food left
+        tribeFedStatus.newTurn();
+        assertEquals("Tribe fed: false; Fields count: 0", tribeFedStatus.state());
+        tribeFedStatus.feedTribeIfEnoughFood(); // not enough food to feed the tribe
+        assertEquals("Tribe fed: false; Fields count: 0", tribeFedStatus.state());
     }
 
     @Test
