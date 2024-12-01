@@ -1,0 +1,61 @@
+package sk.uniba.fmph.dcs.player_board;
+
+import sk.uniba.fmph.dcs.stone_age.Effect;
+
+import java.util.Arrays;
+
+public class TribeFedStatus {
+    private boolean tribeFed;
+    private int fields;
+    private final PlayerFigures playerFigures;
+    private final PlayerResourcesAndFood playerResourcesAndFood;
+
+    public TribeFedStatus (final PlayerFigures playerFigures, final PlayerResourcesAndFood playerResourcesAndFood) {
+        this.playerFigures = playerFigures;
+        this.playerResourcesAndFood = playerResourcesAndFood;
+        fields = 0;
+        tribeFed = false;
+    }
+
+    public void addField() {
+        if (fields < 10) {
+            fields++;
+        }
+    }
+
+    public void newTurn() {
+        tribeFed = false;
+    }
+
+    public boolean feedTribeIfEnoughFood(){
+
+        boolean isEnoughFood = false;
+        int foodToSpend = playerFigures.getTotalFigures() * 2 - fields;
+        Effect[] food = new Effect[foodToSpend];
+        Arrays.fill(food, Effect.FOOD);
+
+        if (playerResourcesAndFood.hasResources(food)) {
+            return feedTribe(food);
+        }
+        return false;
+    }
+
+    public boolean feedTribe(final Effect[] resources) {
+        playerResourcesAndFood.takeResources(resources);
+        tribeFed = true;
+        return tribeFed;
+    }
+
+    public boolean setTribeFed() {
+        this.tribeFed = true;
+        return tribeFed;
+    }
+
+    public boolean isTribeFed() {
+        return tribeFed;
+    }
+
+    public String state() {
+        return "";
+    }
+}
