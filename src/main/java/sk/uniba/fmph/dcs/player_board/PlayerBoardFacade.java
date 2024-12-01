@@ -1,13 +1,11 @@
-package sk.uniba.fmph.dcs.player_board;
-
-import sk.uniba.fmph.dcs.stone_age.*;
+package sk.uniba.fmph.dcs.stone_age;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.OptionalInt;
 
-public class PlayerBoardFacade implements InterfacePlayerBoardGameBoard, InterfaceNewTurn, InterfaceFeedTribe {
+public class PlayerBoardFacade implements InterfacePlayerBoardGameBoard,InterfaceNewTurn,InterfaceFeedTribe {
     private PlayerBoard playerBoard;
     public PlayerBoardFacade(){
         this.playerBoard = new PlayerBoard();
@@ -46,7 +44,7 @@ public class PlayerBoardFacade implements InterfacePlayerBoardGameBoard, Interfa
     }
     @Override
     public boolean hasSufficientTools(int goal){
-        return true;
+        return playerBoard.playerT.hasSufficientTools(goal);
     }
     @Override
     public OptionalInt useTool(int idx){
