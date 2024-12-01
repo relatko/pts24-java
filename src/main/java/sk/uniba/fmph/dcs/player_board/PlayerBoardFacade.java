@@ -1,4 +1,4 @@
-package sk.uniba.fmph.dcs.stone_age;
+package sk.uniba.fmph.dcs.player_board;
 
 import java.util.ArrayList;
 import java.util.Collection;
