@@ -61,11 +61,9 @@ public final class TribeFedStatus {
     }
 
     public String state() {
-        String stringBuilder = "Tribe fed: " +
+        return "Tribe fed: " +
                 tribeFed +
                 "; Fields count: " +
                 fields;
-
-        return stringBuilder;
     }
 }
