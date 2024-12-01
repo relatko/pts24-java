@@ -12,7 +12,7 @@ public class TribeFedStatusTest {
     @BeforeEach
     void setUp() {
         PlayerResourcesAndFood playerResourcesAndFood = new PlayerResourcesAndFood();
-        Effect[] baseResources = {Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD,
+        Effect[] baseResources = {Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD, Effect.FOOD,
                 Effect.WOOD, Effect.CLAY, Effect.STONE, Effect.GOLD};
         playerResourcesAndFood.giveResources(baseResources);
 
