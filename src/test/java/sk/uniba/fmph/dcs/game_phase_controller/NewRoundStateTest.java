@@ -61,7 +61,7 @@ public class NewRoundStateTest {
     }
 
     @Test
-    public void testTryToMakeAutomaticAction() {
+    public void testTryToMakeAutomaticActionScenarioFF() {
         RoundFigureLocationMock location1 = new RoundFigureLocationMock(false);
         RoundFigureLocationMock location2 = new RoundFigureLocationMock(false);
         NewTurnMock newTurnMock = new NewTurnMock();
@@ -69,18 +69,24 @@ public class NewRoundStateTest {
                 newTurnMock);
         assertEquals(HasAction.AUTOMATIC_ACTION_DONE, newRoundState.tryToMakeAutomaticAction(new PlayerOrder(0, 1)));
         assertTrue(newTurnMock.newTurnCalled);
-
-        location1 = new RoundFigureLocationMock(true);
-        location2 = new RoundFigureLocationMock(false);
-        newRoundState = new NewRoundState(new RoundFigureLocationMock[] { location1, location2 }, newTurnMock);
+    }
+    @Test
+    public void testTryToMakeAutomaticActionScenarioTF() {
+        RoundFigureLocationMock location1 = new RoundFigureLocationMock(true);
+        RoundFigureLocationMock location2 = new RoundFigureLocationMock(false);
+        NewTurnMock newTurnMock = new NewTurnMock();
+        NewRoundState newRoundState = new NewRoundState(new RoundFigureLocationMock[] { location1, location2 }, newTurnMock);
         newTurnMock.newTurnCalled = false;
         assertEquals(HasAction.NO_ACTION_POSSIBLE, newRoundState.tryToMakeAutomaticAction(new PlayerOrder(0, 1)));
         assertFalse(newTurnMock.newTurnCalled);
-
-        location1 = new RoundFigureLocationMock(true);
-        location2 = new RoundFigureLocationMock(true);
-        newRoundState = new NewRoundState(new RoundFigureLocationMock[] { location1, location2 }, newTurnMock);
-        newTurnMock.newTurnCalled = false;
+    }
+    @Test
+    public void testTryToMakeAutomaticActionScenarioTT() {
+        RoundFigureLocationMock location1 = new RoundFigureLocationMock(true);
+        RoundFigureLocationMock location2 = new RoundFigureLocationMock(true);
+        NewTurnMock newTurnMock = new NewTurnMock();
+        NewRoundState newRoundState = new NewRoundState(new RoundFigureLocationMock[] { location1, location2 },
+                newTurnMock);
         assertEquals(HasAction.NO_ACTION_POSSIBLE, newRoundState.tryToMakeAutomaticAction(new PlayerOrder(0, 1)));
         assertFalse(newTurnMock.newTurnCalled);
     }
