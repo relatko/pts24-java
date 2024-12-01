@@ -2,9 +2,6 @@
 
 Your task is to construct a component implementing the logic of board game Stone Age. These are the [rules](https://images.zmangames.com/filer_public/ee/88/ee888bec-5000-4566-9fb0-8c6475e706a0/zm7260_stone_age_rules.pdf).
 
-[!Classes Description!](https://github.com/sdeffff/pts24-java/blob/main/src/task/classes.md)
-
-
 ## Design
 
 I prepared a [design](pts24.png) template for your implementation. Besides that I prepared [simple description of the classes](classes.md) with estimations 
@@ -36,10 +33,10 @@ Unit tests for Game should be solitary. Do a sociable unit test of CivilisationC
 You should use Git and produce a reasonable history of commits. Note that to work on the red classes you do not need the blue ones. You are also free to adjust the implementation of blue and green classes according to the needs of your project (but, the changes, hopefully should not be large, a good example is changing interface name, adding a new interface, ...).
 
 
+
 ## Instructions for submitting your project
 
 Send your solution to [lukotka.pts@gmail.com](lukotka.pts@gmail.com). The deadline is 30.11.2022 23:59:59. The solutions sent later will be accepted, however the number of points awarded may be reduced.
 
 Send the solution to me either as compressed folders containing the whole repository (including the hidden .git files) or as a link to private repository with read access granted (GitHub handle `relatko`). Attach a link to the public repository for the team part of the project and link PRs you have made and PRs you have reviewed. 
 
-![UML of the task](https://github.com/sdeffff/pts24-java/blob/main/src/task/pts24.png?raw=true)
