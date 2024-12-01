@@ -55,7 +55,8 @@ public class TribeFedStatusTest {
 
         tribeFedStatus.newTurn();
         assertEquals(tribeFedStatus.state(), "Tribe fed: false; Fields count: 0");
-        assertFalse(tribeFedStatus.feedTribeIfEnoughFood());
+        tribeFedStatus.feedTribeIfEnoughFood();
+        assertEquals(tribeFedStatus.state(), "Tribe fed: false; Fields count: 0");
     }
 
     @Test
