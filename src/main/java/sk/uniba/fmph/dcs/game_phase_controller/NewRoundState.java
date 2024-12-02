@@ -9,14 +9,15 @@ import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
 import java.util.Collection;
+import java.util.Map;
 
 public final class NewRoundState implements InterfaceGamePhaseState {
     private final InterfaceFigureLocation[] locations;
-    private final InterfaceNewTurn newTurn;
+    private final Map<PlayerOrder, InterfaceNewTurn> playerNewTurnMap;
 
-    public NewRoundState(final InterfaceFigureLocation[] places, final InterfaceNewTurn newTurn) {
+    public NewRoundState(final InterfaceFigureLocation[] places, final Map<PlayerOrder, InterfaceNewTurn> playerNewTurnMap) {
         this.locations = places;
-        this.newTurn = newTurn;
+        this.playerNewTurnMap = playerNewTurnMap;
     }
 
     @Override
@@ -26,8 +27,7 @@ public final class NewRoundState implements InterfaceGamePhaseState {
 
     @Override
     public ActionResult makeAction(final PlayerOrder player, final Location location,
-                                   final Collection<Effect> inputResources,
-                                   final Collection<Effect> outputResources) {
+            final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
         return ActionResult.FAILURE;
     }
 
@@ -68,7 +68,9 @@ public final class NewRoundState implements InterfaceGamePhaseState {
                 return HasAction.NO_ACTION_POSSIBLE;
             }
         }
-        newTurn.newTurn();
+        for (InterfaceNewTurn nt : playerNewTurnMap.values()) {
+            nt.newTurn();
+        }
         return HasAction.AUTOMATIC_ACTION_DONE;
     }
 }
