@@ -1,11 +1,14 @@
 package sk.uniba.fmph.dcs.game_board;
 
 import org.apache.commons.lang3.ArrayUtils;
-import sk.uniba.fmph.dcs.stone_age.*;
+import sk.uniba.fmph.dcs.stone_age.Effect;
+import sk.uniba.fmph.dcs.stone_age.HasAction;
+import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
+import sk.uniba.fmph.dcs.stone_age.InterfaceTakeReward;
 
 import java.util.Arrays;
 
-public class RewardMenu implements InterfaceTakeReward {
+public final class RewardMenu implements InterfaceTakeReward {
 
     private Effect[] menu;
     private final Player[] players;
