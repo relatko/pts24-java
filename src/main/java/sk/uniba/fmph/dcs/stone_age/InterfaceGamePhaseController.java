@@ -5,8 +5,8 @@ import java.util.Collection;
 public interface InterfaceGamePhaseController {
     boolean placeFigures(PlayerOrder player, Location location, int figuresCount);
 
-    boolean makeAction(PlayerOrder player, Location location, Collection<Effect> inputResources,
-            Collection<Effect> outputResources);
+    boolean makeAction(PlayerOrder player, Location location, Effect[] inputResources,
+                       Effect[] outputResources);
 
     boolean skipAction(PlayerOrder player, Location location);
 
@@ -14,7 +14,7 @@ public interface InterfaceGamePhaseController {
 
     boolean noMoreToolsThisThrow(PlayerOrder player);
 
-    boolean feedTribe(PlayerOrder player, Collection<Effect> resources);
+    boolean feedTribe(PlayerOrder player, Effect[] resources);
 
     boolean doNotFeedThisTurn(PlayerOrder player);
 

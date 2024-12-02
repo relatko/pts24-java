@@ -189,7 +189,7 @@ public final class GamePhaseController implements InterfaceGamePhaseController {
     }
 
     public boolean makeAction(final PlayerOrder player, final Location location,
-            final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
+            final Effect[] inputResources, final Effect[] outputResources) {
         if (!checkPlayersTurn(player)) {
             return false;
         }
@@ -273,7 +273,7 @@ public final class GamePhaseController implements InterfaceGamePhaseController {
         }
     }
 
-    public boolean feedTribe(final PlayerOrder player, final Collection<Effect> resources) {
+    public boolean feedTribe(final PlayerOrder player, final Effect[] resources) {
         if (!checkPlayersTurn(player)) {
             return false;
         }

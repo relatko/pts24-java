@@ -25,7 +25,7 @@ public final class FeedTribeState implements InterfaceGamePhaseState {
 
     @Override
     public ActionResult makeAction(final PlayerOrder player, final Location location,
-            final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
+            final Effect[] inputResources, final Effect[] outputResources) {
         return ActionResult.FAILURE;
     }
 
@@ -45,7 +45,7 @@ public final class FeedTribeState implements InterfaceGamePhaseState {
     }
 
     @Override
-    public ActionResult feedTribe(final PlayerOrder player, final Collection<Effect> resources) {
+    public ActionResult feedTribe(final PlayerOrder player, final Effect[] resources) {
         if (interfaceFeedTribeCollection.get(player).feedTribe(resources)) {
             return ActionResult.ACTION_DONE;
         }

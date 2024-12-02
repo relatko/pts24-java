@@ -10,8 +10,8 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 public interface InterfaceGamePhaseState {
     ActionResult placeFigures(PlayerOrder player, Location location, int figuresCount);
 
-    ActionResult makeAction(PlayerOrder player, Location location, Collection<Effect> inputResources,
-            Collection<Effect> outputResources);
+    ActionResult makeAction(PlayerOrder player, Location location, Effect[] inputResources,
+            Effect[] outputResources);
 
     ActionResult skipAction(PlayerOrder player, Location location);
 
@@ -19,7 +19,7 @@ public interface InterfaceGamePhaseState {
 
     ActionResult noMoreToolsThisThrow(PlayerOrder player);
 
-    ActionResult feedTribe(PlayerOrder player, Collection<Effect> resources);
+    ActionResult feedTribe(PlayerOrder player, Effect[] resources);
 
     ActionResult doNotFeedThisTurn(PlayerOrder player);
 

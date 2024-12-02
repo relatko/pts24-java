@@ -5,7 +5,7 @@ import java.util.Collection;
 public interface InterfaceFeedTribe {
     boolean feedTribeIfEnoughFood();
 
-    boolean feedTribe(Collection<Effect> resources);
+    boolean feedTribe(Effect[] resources);
 
     boolean doNotFeedThisTurn();
 
