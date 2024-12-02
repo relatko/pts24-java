@@ -77,14 +77,13 @@ public class ToolMakerHutFields {
 
     public boolean skipActionOnToolMaker(Player player){
         if (canActionOnToolMaker(player)) {
-            player.getPlayerBoard().giveFigure();
             toolMakerFigures = null;
             return true;
         }
         return false;
     }
 
-    boolean canPlaceOnHut(Player player){
+    public boolean canPlaceOnHut(Player player){
         if(!checkRestrictions())
             return false;
         return hutFigures == null  && player.getPlayerBoard().hasFigures(2);
@@ -114,8 +113,6 @@ public class ToolMakerHutFields {
 
     public boolean skipActionOnHut(Player player){
         if (canActionOnHut(player)) {
-            player.getPlayerBoard().giveFigure();
-            player.getPlayerBoard().giveFigure();
             hutFigures = null;
             return true;
         }
@@ -155,7 +152,6 @@ public class ToolMakerHutFields {
 
     public boolean skipActionOnFields(Player player){
         if (canActionOnFields(player)) {
-            player.getPlayerBoard().giveFigure();
             fieldsFigures = null;
             return true;
         }
