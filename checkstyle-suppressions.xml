@@ -20,4 +20,7 @@
    <suppress files="ToolMakerHutFields.java" checks="NoWhitespaceAfter"/>
    <suppress checks="NoWhitespaceAfter"
              files="GetChoice"/>
+    <suppress checks="NoWhitespaceAfter"
+             files="PlayerCivilisationCards.java"/>
+   <suppress files="ToolMakerHutFields.java" checks="NoWhitespaceAfter"/>
 </suppressions>
