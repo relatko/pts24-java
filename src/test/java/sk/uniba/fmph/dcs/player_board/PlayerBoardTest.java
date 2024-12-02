@@ -1,5 +1,6 @@
 package sk.uniba.fmph.dcs.player_board;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.naming.CannotProceedException;
@@ -8,36 +9,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerBoardTest {
 
+    private PlayerBoard playerBoard;
+
+    @BeforeEach
+    void setUp() {
+        PlayerResourcesAndFood playerResourcesAndFood = new PlayerResourcesAndFood();
+        PlayerFigures playerFigures = new PlayerFigures();
+        this.playerBoard = new PlayerBoard(playerResourcesAndFood, playerFigures, new PlayerCivilisationCards(),
+                new PlayerTools(), new TribeFedStatus(playerFigures, playerResourcesAndFood));
+    }
+
     @Test
     public void testItIsNotPossibleToStartNewTurnWhenTribeIsNotFed() {
-        PlayerBoard board = new PlayerBoard(new PlayerResourcesAndFood(), new PlayerFigures(),
-                new PlayerCivilisationCards(), new PlayerTools(), new TribeFedStatus());
-
-        assertThrows(CannotProceedException.class, board::newTurn);
+        assertThrows(CannotProceedException.class, playerBoard::newTurn);
     }
 
     @Test
     void testAddPoints() {
-        PlayerBoard board = new PlayerBoard(new PlayerResourcesAndFood(), new PlayerFigures(),
-                new PlayerCivilisationCards(), new PlayerTools(), new TribeFedStatus());
+        playerBoard.addPoints(10);
+        assertEquals("10,0", playerBoard.state());
 
-        board.addPoints(10);
-        assertEquals("10,0", board.state());
-
-        board.addPoints(5);
-        assertEquals("15,0", board.state());
+        playerBoard.addPoints(5);
+        assertEquals("15,0", playerBoard.state());
     }
 
     @Test
     void testAddHouse() {
-        PlayerBoard board = new PlayerBoard(new PlayerResourcesAndFood(), new PlayerFigures(),
-                new PlayerCivilisationCards(), new PlayerTools(), new TribeFedStatus());
+        playerBoard.addHouse();
+        assertEquals("0,1", playerBoard.state());
 
-        board.addHouse();
-        assertEquals("0,1", board.state());
-
-        board.addHouse();
-        assertEquals("0,2", board.state());
+        playerBoard.addHouse();
+        assertEquals("0,2", playerBoard.state());
     }
 
 }
