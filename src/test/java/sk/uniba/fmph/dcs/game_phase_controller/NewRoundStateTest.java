@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import sk.uniba.fmph.dcs.stone_age.*;
 
 import java.util.Collection;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -64,29 +65,37 @@ public class NewRoundStateTest {
         RoundFigureLocationMock location1 = new RoundFigureLocationMock(false);
         RoundFigureLocationMock location2 = new RoundFigureLocationMock(false);
         NewTurnMock newTurnMock = new NewTurnMock();
+        NewTurnMock newTurnMock2 = new NewTurnMock();
         NewRoundState newRoundState = new NewRoundState(new RoundFigureLocationMock[] { location1, location2 },
-                newTurnMock);
+                Map.of(new PlayerOrder(0,2), newTurnMock, new PlayerOrder(1, 2), newTurnMock2));
         assertEquals(HasAction.AUTOMATIC_ACTION_DONE, newRoundState.tryToMakeAutomaticAction(new PlayerOrder(0, 1)));
         assertTrue(newTurnMock.newTurnCalled);
+        assertTrue(newTurnMock2.newTurnCalled);
     }
     @Test
     public void testTryToMakeAutomaticActionScenarioTF() {
         RoundFigureLocationMock location1 = new RoundFigureLocationMock(true);
         RoundFigureLocationMock location2 = new RoundFigureLocationMock(false);
         NewTurnMock newTurnMock = new NewTurnMock();
-        NewRoundState newRoundState = new NewRoundState(new RoundFigureLocationMock[] { location1, location2 }, newTurnMock);
+        NewTurnMock newTurnMock2 = new NewTurnMock();
+        NewRoundState newRoundState = new NewRoundState(new RoundFigureLocationMock[] { location1, location2 },
+                Map.of(new PlayerOrder(0,2), newTurnMock, new PlayerOrder(1, 2), newTurnMock2));
         newTurnMock.newTurnCalled = false;
+        newTurnMock2.newTurnCalled = false;
         assertEquals(HasAction.NO_ACTION_POSSIBLE, newRoundState.tryToMakeAutomaticAction(new PlayerOrder(0, 1)));
         assertFalse(newTurnMock.newTurnCalled);
+        assertFalse(newTurnMock2.newTurnCalled);
     }
     @Test
     public void testTryToMakeAutomaticActionScenarioTT() {
         RoundFigureLocationMock location1 = new RoundFigureLocationMock(true);
         RoundFigureLocationMock location2 = new RoundFigureLocationMock(true);
         NewTurnMock newTurnMock = new NewTurnMock();
+        NewTurnMock newTurnMock2 = new NewTurnMock();
         NewRoundState newRoundState = new NewRoundState(new RoundFigureLocationMock[] { location1, location2 },
-                newTurnMock);
+                Map.of(new PlayerOrder(0,2), newTurnMock, new PlayerOrder(1, 2), newTurnMock2));
         assertEquals(HasAction.NO_ACTION_POSSIBLE, newRoundState.tryToMakeAutomaticAction(new PlayerOrder(0, 1)));
         assertFalse(newTurnMock.newTurnCalled);
+        assertFalse(newTurnMock2.newTurnCalled);
     }
 }
