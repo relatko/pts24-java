@@ -7,7 +7,6 @@ import sk.uniba.fmph.dcs.stone_age.InterfaceNewTurn;
 import sk.uniba.fmph.dcs.stone_age.InterfacePlayerBoardGameBoard;
 
 import javax.naming.CannotProceedException;
-import java.util.Collection;
 import java.util.Optional;
 
 public final class PlayerBoardGameBoardFacade
@@ -52,7 +51,7 @@ public final class PlayerBoardGameBoardFacade
 
     @Override
     public Optional<Integer> useTool(final int idx) {
-        return this.playerBoard.getTools().useTool(idx);
+        return Optional.of(this.playerBoard.getTools().useTool(idx));
     }
 
     @Override
@@ -66,7 +65,7 @@ public final class PlayerBoardGameBoardFacade
     }
 
     @Override
-    public boolean feedTribe(final Collection<Effect> resources) {
+    public boolean feedTribe(final Effect[] resources) {
         return playerBoard.getFedStatus().feedTribe(resources);
     }
 

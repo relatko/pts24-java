@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Collection;
 
 import org.junit.jupiter.api.Test;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
@@ -33,8 +32,8 @@ class StateMock implements InterfaceGamePhaseState {
     }
 
     @Override
-    public ActionResult makeAction(PlayerOrder player, Location location, Collection<Effect> inputResources,
-            Collection<Effect> outputResources) {
+    public ActionResult makeAction(PlayerOrder player, Location location, Effect[] inputResources,
+                                   Effect[] outputResources) {
         assert !expectedActionResults.isEmpty();
         return expectedActionResults.remove(0);
     }
@@ -58,7 +57,7 @@ class StateMock implements InterfaceGamePhaseState {
     }
 
     @Override
-    public ActionResult feedTribe(PlayerOrder player, Collection<Effect> resources) {
+    public ActionResult feedTribe(PlayerOrder player, Effect[] resources) {
         assert !expectedActionResults.isEmpty();
         return expectedActionResults.remove(0);
     }
@@ -152,11 +151,11 @@ class GamePhaseControllerTest {
     }
 
     private boolean makeAction(int idx1, int idx2) {
-        return controller.makeAction(new PlayerOrder(idx1, idx2), Location.BUILDING_TILE1, List.of(), List.of());
+        return controller.makeAction(new PlayerOrder(idx1, idx2), Location.BUILDING_TILE1, new Effect[]{}, new Effect[]{});
     }
 
     private boolean feedTribe(int idx1, int idx2) {
-        return controller.feedTribe(new PlayerOrder(idx1, idx2), List.of());
+        return controller.feedTribe(new PlayerOrder(idx1, idx2), new Effect[]{});
     }
 
     private boolean useTools(int idx1, int idx2) {

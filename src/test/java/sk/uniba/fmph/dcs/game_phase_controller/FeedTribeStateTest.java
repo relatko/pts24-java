@@ -8,8 +8,6 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.InterfaceFeedTribe;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 
 public class FeedTribeStateTest {
@@ -31,7 +29,7 @@ public class FeedTribeStateTest {
         }
 
         @Override
-        public boolean feedTribe(Collection<Effect> resources) {
+        public boolean feedTribe(Effect[] resources) {
             return returnValue;
         }
 
@@ -72,7 +70,7 @@ public class FeedTribeStateTest {
 
         map.put(player1, new InterfaceFeedTribeTry(1, 1, false));
         map.put(player2, new InterfaceFeedTribeTry(1, 1, true));
-        ArrayList<Effect> resources = new ArrayList<>();
+        Effect[] resources = new Effect[]{};
 
         FeedTribeState feedState = new FeedTribeState(map);
 
