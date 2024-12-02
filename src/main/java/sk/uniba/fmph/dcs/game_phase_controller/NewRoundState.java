@@ -8,7 +8,6 @@ import sk.uniba.fmph.dcs.stone_age.InterfaceNewTurn;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.Collection;
 import java.util.Map;
 
 public final class NewRoundState implements InterfaceGamePhaseState {

@@ -7,9 +7,6 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameEndStateTest {

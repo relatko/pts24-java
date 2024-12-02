@@ -6,8 +6,6 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.Collection;
-
 public final class GameEndState implements InterfaceGamePhaseState {
     @Override
     public ActionResult placeFigures(final PlayerOrder player, final Location location, final int figuresCount) {

@@ -7,7 +7,6 @@ import sk.uniba.fmph.dcs.stone_age.InterfaceToolUse;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.Collection;
 import java.util.Map;
 
 public final class WaitingForToolUseState implements InterfaceGamePhaseState {

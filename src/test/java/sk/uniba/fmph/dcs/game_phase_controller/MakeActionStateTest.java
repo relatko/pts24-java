@@ -9,7 +9,6 @@ import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 import sk.uniba.fmph.dcs.stone_age.ActionResult;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MakeActionStateTest {
 
-    private Location location;;
+    private Location location;
     private PlayerOrder player;
     private MakeActionState makeActionState;
     private Map<Location, InterfaceFigureLocation> places;

@@ -8,7 +8,6 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 
 import java.util.Map;
-import java.util.Collection;
 
 //this class represents figure placing and nothing else
 public class PlaceFiguresState implements InterfaceGamePhaseState {

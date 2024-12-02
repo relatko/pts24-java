@@ -2,7 +2,6 @@ package sk.uniba.fmph.dcs.stone_age;
 
 import sk.uniba.fmph.dcs.game_phase_controller.GamePhaseController;
 
-import java.util.Collection;
 import java.util.Map;
 
 public final class StoneAgeGame implements InterfaceStoneAgeGame {
