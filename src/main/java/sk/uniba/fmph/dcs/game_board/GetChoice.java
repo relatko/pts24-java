@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class GetChoice implements EvaluateCivilisationCardImmediateEffect {
 
     private int numberOfResources;
-    private ArrayList<Effect> list;
 
     /**
      *
