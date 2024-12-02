@@ -39,8 +39,8 @@ public class MakeActionStateTest {
             }
 
             @Override
-            public ActionResult makeAction(PlayerOrder player, Collection<Effect> inputResources,
-                    Collection<Effect> outputResources) {
+            public ActionResult makeAction(PlayerOrder player, Effect[] inputResources,
+                    Effect[] outputResources) {
                 if (actionSuccess) {
                     return ActionResult.ACTION_DONE;
                 } else {

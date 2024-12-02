@@ -30,8 +30,8 @@ public class NewRoundStateTest {
         }
 
         @Override
-        public ActionResult makeAction(PlayerOrder player, Collection<Effect> inputResources,
-                Collection<Effect> outputResources) {
+        public ActionResult makeAction(PlayerOrder player, Effect[] inputResources,
+                Effect[] outputResources) {
             throw new AssertionError();
         }
 

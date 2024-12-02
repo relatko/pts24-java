@@ -7,7 +7,7 @@ public interface InterfaceFigureLocation {
 
     HasAction tryToPlaceFigures(PlayerOrder player, int count);
 
-    ActionResult makeAction(PlayerOrder player, Collection<Effect> inputResources, Collection<Effect> outputResources);
+    ActionResult makeAction(PlayerOrder player, Effect[] inputResources, Effect[] outputResources);
 
     boolean skipAction(PlayerOrder player);
 

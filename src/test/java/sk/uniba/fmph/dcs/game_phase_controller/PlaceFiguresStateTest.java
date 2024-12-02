@@ -40,8 +40,8 @@ public class PlaceFiguresStateTest {
             }
 
             @Override
-            public ActionResult makeAction(PlayerOrder player, Collection<Effect> inputResources,
-                    Collection<Effect> outputResources) {
+            public ActionResult makeAction(PlayerOrder player, Effect[] inputResources,
+                    Effect[] outputResources) {
                 return null;
             }
 
