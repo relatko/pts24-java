@@ -6,8 +6,6 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.Collection;
-
 public final class GameEndState implements InterfaceGamePhaseState {
     @Override
     public ActionResult placeFigures(final PlayerOrder player, final Location location, final int figuresCount) {
@@ -16,8 +14,8 @@ public final class GameEndState implements InterfaceGamePhaseState {
 
     @Override
     public ActionResult makeAction(final PlayerOrder player, final Location location,
-                                   final Collection<Effect> inputResources,
-                                   final Collection<Effect> outputResources) {
+                                   final Effect[] inputResources,
+                                   final Effect[] outputResources) {
         return ActionResult.FAILURE;
     }
 
@@ -37,7 +35,7 @@ public final class GameEndState implements InterfaceGamePhaseState {
     }
 
     @Override
-    public ActionResult feedTribe(final PlayerOrder player, final Collection<Effect> resources) {
+    public ActionResult feedTribe(final PlayerOrder player, final Effect[] resources) {
         return ActionResult.FAILURE;
     }
 

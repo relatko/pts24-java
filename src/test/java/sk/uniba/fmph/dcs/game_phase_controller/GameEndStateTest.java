@@ -7,9 +7,6 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameEndStateTest {
@@ -23,7 +20,7 @@ public class GameEndStateTest {
     @Test
     public void testMethodsReturnActionResultFailure() {
         PlayerOrder player = new PlayerOrder(1, 1);
-        Collection<Effect> resources = new ArrayList<>();
+        Effect[] resources = new Effect[]{};
         GameEndState gameEndState = new GameEndState();
 
         assertEquals(gameEndState.doNotFeedThisTurn(player), ActionResult.FAILURE);

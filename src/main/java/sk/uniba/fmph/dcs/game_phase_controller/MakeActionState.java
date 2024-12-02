@@ -8,7 +8,6 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -61,7 +60,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
 
     @Override
     public ActionResult makeAction(final PlayerOrder player, final Location location,
-            final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
+            final Effect[] inputResources, final Effect[] outputResources) {
         if ((this.places.containsKey(location)) && (this.places.get(location) != null)) {
             ActionResult actionResult = this.places.get(location).makeAction(player, inputResources, outputResources);
             places.remove(location);
@@ -124,7 +123,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
      */
 
     @Override
-    public ActionResult feedTribe(final PlayerOrder player, final Collection<Effect> resources) {
+    public ActionResult feedTribe(final PlayerOrder player, final Effect[] resources) {
         return ActionResult.FAILURE;
     }
 

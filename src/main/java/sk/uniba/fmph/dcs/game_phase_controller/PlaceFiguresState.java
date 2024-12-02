@@ -8,7 +8,6 @@ import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 
 import java.util.Map;
-import java.util.Collection;
 
 //this class represents figure placing and nothing else
 public class PlaceFiguresState implements InterfaceGamePhaseState {
@@ -54,7 +53,7 @@ public class PlaceFiguresState implements InterfaceGamePhaseState {
 
     @Override
     public ActionResult makeAction(final PlayerOrder player, final Location location,
-            final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
+            final Effect[] inputResources, final Effect[] outputResources) {
         return ActionResult.FAILURE;
     }
 
@@ -108,7 +107,7 @@ public class PlaceFiguresState implements InterfaceGamePhaseState {
      */
 
     @Override
-    public ActionResult feedTribe(final PlayerOrder player, final Collection<Effect> resources) {
+    public ActionResult feedTribe(final PlayerOrder player, final Effect[] resources) {
         return ActionResult.FAILURE;
     }
 
