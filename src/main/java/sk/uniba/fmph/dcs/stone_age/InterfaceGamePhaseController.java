@@ -1,7 +1,5 @@
 package sk.uniba.fmph.dcs.stone_age;
 
-import java.util.Collection;
-
 public interface InterfaceGamePhaseController {
     boolean placeFigures(PlayerOrder player, Location location, int figuresCount);
 

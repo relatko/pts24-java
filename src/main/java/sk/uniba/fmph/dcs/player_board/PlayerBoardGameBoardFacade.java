@@ -7,7 +7,6 @@ import sk.uniba.fmph.dcs.stone_age.InterfaceNewTurn;
 import sk.uniba.fmph.dcs.stone_age.InterfacePlayerBoardGameBoard;
 
 import javax.naming.CannotProceedException;
-import java.util.Collection;
 import java.util.Optional;
 
 public final class PlayerBoardGameBoardFacade

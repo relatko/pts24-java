@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Collection;
 
 import org.junit.jupiter.api.Test;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;

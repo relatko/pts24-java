@@ -7,8 +7,6 @@ import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 
-import java.util.Collection;
-
 public final class AllPlayersTakeARewardState implements InterfaceGamePhaseState {
 
     private final InterfaceTakeReward interfaceTakeReward;

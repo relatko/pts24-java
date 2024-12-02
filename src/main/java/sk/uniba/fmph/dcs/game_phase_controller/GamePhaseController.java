@@ -11,10 +11,8 @@ import java.util.Optional;
 
 import org.json.JSONObject;
 
-import java.util.Collection;
-
 public final class GamePhaseController implements InterfaceGamePhaseController {
-    private Map<GamePhase, InterfaceGamePhaseState> dispatchers;
+    private final Map<GamePhase, InterfaceGamePhaseState> dispatchers;
     private PlayerOrder roundStartingPlayer;
     private PlayerOrder currentPlayer;
     private Optional<PlayerOrder> currentPlayerTakingReward;

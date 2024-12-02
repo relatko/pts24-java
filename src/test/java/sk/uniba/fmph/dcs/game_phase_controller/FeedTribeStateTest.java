@@ -8,8 +8,6 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.InterfaceFeedTribe;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 
 public class FeedTribeStateTest {
