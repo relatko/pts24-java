@@ -6,7 +6,6 @@ import sk.uniba.fmph.dcs.stone_age.HasAction;
 import sk.uniba.fmph.dcs.stone_age.InterfaceFigureLocation;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.Collection;
 import java.util.List;
 
 public final class FigureLocationAdaptor implements InterfaceFigureLocation {
@@ -36,12 +35,10 @@ public final class FigureLocationAdaptor implements InterfaceFigureLocation {
     }
 
     @Override
-    public ActionResult makeAction(final PlayerOrder player, final Collection<Effect> inputResources,
-            final Collection<Effect> outputResources) {
-        Effect[] in = inputResources.toArray(new Effect[0]);
-        Effect[] out = outputResources.toArray(new Effect[0]);
+    public ActionResult makeAction(final PlayerOrder player, final Effect[] inputResources,
+            final Effect[] outputResources) {
         if (getPlayerOrder(player) != null) {
-            return figureLocationInternal.makeAction(getPlayerOrder(player), in, out);
+            return figureLocationInternal.makeAction(getPlayerOrder(player), inputResources, outputResources);
         }
         return null;
     }

@@ -2,7 +2,6 @@ package sk.uniba.fmph.dcs.stone_age;
 
 import sk.uniba.fmph.dcs.game_phase_controller.GamePhaseController;
 
-import java.util.Collection;
 import java.util.Map;
 
 public final class StoneAgeGame implements InterfaceStoneAgeGame {
@@ -42,8 +41,8 @@ public final class StoneAgeGame implements InterfaceStoneAgeGame {
     }
 
     @Override
-    public boolean makeAction(final int playerId, final Location location, final Collection<Effect> usedResources,
-            final Collection<Effect> desiredResources) {
+    public boolean makeAction(final int playerId, final Location location, final Effect[] usedResources,
+            final Effect[] desiredResources) {
         if (players.containsKey(playerId)) {
             Effect[] usedRes = usedResources.toArray(new Effect[0]);
             Effect[] desiredRes = desiredResources.toArray(new Effect[0]);
@@ -85,7 +84,7 @@ public final class StoneAgeGame implements InterfaceStoneAgeGame {
     }
 
     @Override
-    public boolean feedTribe(final int playerId, final Collection<Effect> resources) {
+    public boolean feedTribe(final int playerId, final Effect[] resources) {
         if (players.containsKey(playerId)) {
             Effect[] res = resources.toArray(new Effect[0]);
             boolean ret = gamePhaseController.feedTribe(players.get(playerId), res);
