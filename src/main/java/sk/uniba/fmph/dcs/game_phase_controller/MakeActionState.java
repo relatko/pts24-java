@@ -7,13 +7,10 @@ import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 
-import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Collection;
 
-//this class represents making possible actions and nothing else
 public class MakeActionState implements InterfaceGamePhaseState {
 
     private final Map<Location, InterfaceFigureLocation> places;
@@ -66,13 +63,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
     public ActionResult makeAction(final PlayerOrder player, final Location location, final Effect[] inputResources,
             final Effect[] outputResources) {
         if ((this.places.containsKey(location)) && (this.places.get(location) != null)) {
-            // Collection<Effect> inputRes = new ArrayList<>(Arrays.asList(inputResources));
-            Collection<Effect> inputRes = new ArrayList<>();
-            Collections.addAll(inputRes, inputResources);
-            // Collection<Effect> outputRes = new ArrayList<>(Arrays.asList(outputResources));
-            Collection<Effect> outputRes = new ArrayList<>();
-            Collections.addAll(outputRes, outputResources);
-            ActionResult actionResult = this.places.get(location).makeAction(player, inputRes, outputRes);
+            ActionResult actionResult = this.places.get(location).makeAction(player, inputResources, outputResources);
             places.remove(location);
             return actionResult;
         }

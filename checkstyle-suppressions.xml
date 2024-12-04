@@ -16,9 +16,18 @@
    <suppress checks="LineLength"
              files="[/\\]src"/>
    <suppress checks="NoWhitespaceAfter"
-             files="PlayerCivilisationCard"/>
+             files="PlayerCivilisationCards.java"/>
+   <suppress files="ToolMakerHutFields.java" checks="NoWhitespaceAfter"/>
    <suppress checks="NoWhitespaceAfter"
              files="GetChoice"/>
    <suppress checks="NoWhitespaceAfter"
              files="PlayerTools"/>
+    <suppress checks="NoWhitespaceAfter"
+             files="PlayerCivilisationCards.java"/>
+   <suppress checks="NoWhitespaceAfter"
+             files="ToolMakerHutFields.java"/>
+   <suppress checks="NoWhitespaceAfter"
+             files="PlayerTools.java"/>
+   <suppress checks="NoWhitespaceAfter"
+             files="RewardMenu.java"/>
 </suppressions>
