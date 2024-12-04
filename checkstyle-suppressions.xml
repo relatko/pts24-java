@@ -23,4 +23,6 @@
     <suppress checks="NoWhitespaceAfter"
              files="PlayerCivilisationCards.java"/>
    <suppress files="ToolMakerHutFields.java" checks="NoWhitespaceAfter"/>
+   <suppress files="PlayerTools.java" checks="NoWhitespaceAfter"/>
+   <suppress files="RewardMenu.java" checks="NoWhitespaceAfter"/>
 </suppressions>
