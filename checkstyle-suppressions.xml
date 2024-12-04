@@ -19,4 +19,6 @@
              files="PlayerCivilisationCard"/>
    <suppress checks="NoWhitespaceAfter"
              files="GetChoice"/>
+   <suppress checks="NoWhitespaceAfter"
+             files="PlayerTools"/>
 </suppressions>

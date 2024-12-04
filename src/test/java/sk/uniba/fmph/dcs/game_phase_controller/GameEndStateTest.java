@@ -23,7 +23,7 @@ public class GameEndStateTest {
     @Test
     public void testMethodsReturnActionResultFailure() {
         PlayerOrder player = new PlayerOrder(1, 1);
-        Collection<Effect> resources = new ArrayList<>();
+        Effect[] resources = new Effect[0];
         GameEndState gameEndState = new GameEndState();
 
         assertEquals(gameEndState.doNotFeedThisTurn(player), ActionResult.FAILURE);

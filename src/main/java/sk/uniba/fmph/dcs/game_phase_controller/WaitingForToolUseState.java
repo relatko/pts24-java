@@ -7,7 +7,6 @@ import sk.uniba.fmph.dcs.stone_age.InterfaceToolUse;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 
-import java.util.Collection;
 import java.util.Map;
 
 public final class WaitingForToolUseState implements InterfaceGamePhaseState {
@@ -23,8 +22,8 @@ public final class WaitingForToolUseState implements InterfaceGamePhaseState {
     }
 
     @Override
-    public ActionResult makeAction(final PlayerOrder player, final Location location,
-            final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
+    public ActionResult makeAction(final PlayerOrder player, final Location location, final Effect[] inputResources,
+            final Effect[] outputResources) {
         return ActionResult.FAILURE;
     }
 
@@ -52,7 +51,7 @@ public final class WaitingForToolUseState implements InterfaceGamePhaseState {
     }
 
     @Override
-    public ActionResult feedTribe(final PlayerOrder player, final Collection<Effect> resources) {
+    public ActionResult feedTribe(final PlayerOrder player, final Effect[] resources) {
         return ActionResult.FAILURE;
     }
 
