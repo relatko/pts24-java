@@ -3,18 +3,21 @@ package sk.uniba.fmph.dcs.game_phase_controller;
 import sk.uniba.fmph.dcs.stone_age.ActionResult;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
+import sk.uniba.fmph.dcs.stone_age.InterfaceFigureLocation;
+import sk.uniba.fmph.dcs.stone_age.InterfaceNewTurn;
 import sk.uniba.fmph.dcs.stone_age.Location;
 import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
-import sk.uniba.fmph.dcs.stone_age.InterfaceFeedTribe;
 
 import java.util.Map;
 
-public final class FeedTribeState implements InterfaceGamePhaseState {
+public final class NewRoundState implements InterfaceGamePhaseState {
+    private final InterfaceFigureLocation[] locations;
+    private final Map<PlayerOrder, InterfaceNewTurn> playerNewTurnMap;
 
-    private final Map<PlayerOrder, InterfaceFeedTribe> interfaceFeedTribeCollection;
-
-    public FeedTribeState(final Map<PlayerOrder, InterfaceFeedTribe> interfaceFeedTribeCollection) {
-        this.interfaceFeedTribeCollection = interfaceFeedTribeCollection;
+    public NewRoundState(final InterfaceFigureLocation[] locations,
+            final Map<PlayerOrder, InterfaceNewTurn> playerNewTurnMap) {
+        this.locations = locations;
+        this.playerNewTurnMap = playerNewTurnMap;
     }
 
     @Override
@@ -45,17 +48,11 @@ public final class FeedTribeState implements InterfaceGamePhaseState {
 
     @Override
     public ActionResult feedTribe(final PlayerOrder player, final Effect[] resources) {
-        if (interfaceFeedTribeCollection.get(player).feedTribe(resources)) {
-            return ActionResult.ACTION_DONE;
-        }
         return ActionResult.FAILURE;
     }
 
     @Override
     public ActionResult doNotFeedThisTurn(final PlayerOrder player) {
-        if (interfaceFeedTribeCollection.get(player).doNotFeedThisTurn()) {
-            return ActionResult.ACTION_DONE;
-        }
         return ActionResult.FAILURE;
     }
 
@@ -66,13 +63,17 @@ public final class FeedTribeState implements InterfaceGamePhaseState {
 
     @Override
     public HasAction tryToMakeAutomaticAction(final PlayerOrder player) {
-        if (interfaceFeedTribeCollection.get(player).isTribeFed()) {
-            return HasAction.NO_ACTION_POSSIBLE;
+        for (InterfaceFigureLocation location : locations) {
+            if (location.newTurn()) {
+                return HasAction.NO_ACTION_POSSIBLE;
+            }
         }
-        if (interfaceFeedTribeCollection.get(player).feedTribeIfEnoughFood()) {
-            return HasAction.AUTOMATIC_ACTION_DONE;
+        for (InterfaceNewTurn nt : playerNewTurnMap.values()) {
+            try {
+                nt.newTurn();
+            } catch (Exception ignored) {
+            }
         }
-        return HasAction.WAITING_FOR_PLAYER_ACTION;
-
+        return HasAction.AUTOMATIC_ACTION_DONE;
     }
 }
