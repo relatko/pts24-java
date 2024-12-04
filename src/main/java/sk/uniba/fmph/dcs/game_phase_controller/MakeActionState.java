@@ -7,10 +7,11 @@ import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Collection;
+import java.util.ArrayList;
 
 //this class represents making possible actions and nothing else
 public class MakeActionState implements InterfaceGamePhaseState {
@@ -39,6 +40,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *            - where player want to place figure/s
      * @param figuresCount
      *            - number of figures
+     *
      * @return - this class is not responsible for this method
      */
     @Override
@@ -56,14 +58,17 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *            - resources that player want to spend
      * @param outputResources
      *            - resources that player acheive
+     *
      * @return - ActionResult of the action
      */
 
     @Override
-    public ActionResult makeAction(final PlayerOrder player, final Location location,
-            final Collection<Effect> inputResources, final Collection<Effect> outputResources) {
+    public ActionResult makeAction(final PlayerOrder player, final Location location, final Effect[] inputResources,
+            final Effect[] outputResources) {
         if ((this.places.containsKey(location)) && (this.places.get(location) != null)) {
-            ActionResult actionResult = this.places.get(location).makeAction(player, inputResources, outputResources);
+            Collection<Effect> inputRes = new ArrayList<>(Arrays.asList(inputResources));
+            Collection<Effect> outputRes = new ArrayList<>(Arrays.asList(outputResources));
+            ActionResult actionResult = this.places.get(location).makeAction(player, inputRes, outputRes);
             places.remove(location);
             return actionResult;
         }
@@ -76,6 +81,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *            - current player
      * @param location
      *            - location where player want to skip action
+     *
      * @return - ActionResult of skipping action
      */
 
@@ -94,6 +100,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *            - current player
      * @param toolIndex
      *            - index of the tool which player want to use
+     *
      * @return - this class is not responsible for this method
      */
 
@@ -106,6 +113,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *
      * @param player
      *            - current player
+     *
      * @return - this class is not responsible for this method
      */
 
@@ -120,11 +128,12 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *            - current player
      * @param resources
      *            - food that player want to feed his tribe with
+     *
      * @return - this class is not responsible for this method
      */
 
     @Override
-    public ActionResult feedTribe(final PlayerOrder player, final Collection<Effect> resources) {
+    public ActionResult feedTribe(final PlayerOrder player, final Effect[] resources) {
         return ActionResult.FAILURE;
     }
 
@@ -132,6 +141,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *
      * @param player
      *            - current player
+     *
      * @return - this class is not responsible for this method
      */
 
@@ -146,6 +156,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *            - current player
      * @param reward
      *            - reward that player want from action
+     *
      * @return - this class is not responsible for this method
      */
 
@@ -158,6 +169,7 @@ public class MakeActionState implements InterfaceGamePhaseState {
      *
      * @param player
      *            - current player
+     *
      * @return - HasAction whether it is possible to make automatic action
      */
 
