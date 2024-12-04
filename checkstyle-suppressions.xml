@@ -30,4 +30,6 @@
              files="PlayerTools.java"/>
    <suppress checks="NoWhitespaceAfter"
              files="RewardMenu.java"/>
+   <suppress checks="NoWhitespaceAfter"
+             files="AllPlayersTakeReward"/>
 </suppressions>

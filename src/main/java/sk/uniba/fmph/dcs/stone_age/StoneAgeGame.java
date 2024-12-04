@@ -44,9 +44,7 @@ public final class StoneAgeGame implements InterfaceStoneAgeGame {
     public boolean makeAction(final int playerId, final Location location, final Effect[] usedResources,
             final Effect[] desiredResources) {
         if (players.containsKey(playerId)) {
-            Effect[] usedRes = usedResources.toArray(new Effect[0]);
-            Effect[] desiredRes = desiredResources.toArray(new Effect[0]);
-            boolean ret = gamePhaseController.makeAction(players.get(playerId), location, usedRes, desiredRes);
+            boolean ret = gamePhaseController.makeAction(players.get(playerId), location, usedResources, desiredResources);
             notifyObserver();
             return ret;
         }
@@ -86,8 +84,7 @@ public final class StoneAgeGame implements InterfaceStoneAgeGame {
     @Override
     public boolean feedTribe(final int playerId, final Effect[] resources) {
         if (players.containsKey(playerId)) {
-            Effect[] res = resources.toArray(new Effect[0]);
-            boolean ret = gamePhaseController.feedTribe(players.get(playerId), res);
+            boolean ret = gamePhaseController.feedTribe(players.get(playerId), resources);
             notifyObserver();
             return ret;
         }
