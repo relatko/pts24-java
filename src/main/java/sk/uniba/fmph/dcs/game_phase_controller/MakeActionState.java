@@ -7,11 +7,10 @@ import sk.uniba.fmph.dcs.stone_age.PlayerOrder;
 import sk.uniba.fmph.dcs.stone_age.Effect;
 import sk.uniba.fmph.dcs.stone_age.HasAction;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
-//this class represents making possible actions and nothing else
 public class MakeActionState implements InterfaceGamePhaseState {
 
     private final Map<Location, InterfaceFigureLocation> places;

@@ -20,7 +20,7 @@ public class GameEndStateTest {
     @Test
     public void testMethodsReturnActionResultFailure() {
         PlayerOrder player = new PlayerOrder(1, 1);
-        Effect[] resources = new Effect[] {};
+        Effect[] resources = new Effect[0];
         GameEndState gameEndState = new GameEndState();
 
         assertEquals(gameEndState.doNotFeedThisTurn(player), ActionResult.FAILURE);

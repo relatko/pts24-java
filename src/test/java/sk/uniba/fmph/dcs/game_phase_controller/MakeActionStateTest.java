@@ -21,6 +21,7 @@ public class MakeActionStateTest {
     private MakeActionState makeActionState;
     private Map<Location, InterfaceFigureLocation> places;
     private boolean actionSuccess;
+    private Effect[] resources;
 
     @BeforeEach
     public void setUp() {
@@ -64,20 +65,19 @@ public class MakeActionStateTest {
         places = new HashMap<>();
         places.put(location, figureLocation);
         makeActionState = new MakeActionState(places);
+        resources = new Effect[0];
     }
 
-    // Successful action
     @Test
     public void testMakeActionSuccesful() {
         actionSuccess = true;
-        ActionResult result = makeActionState.makeAction(player, location, null, null);
+        ActionResult result = makeActionState.makeAction(player, location, resources, resources);
         assertEquals(ActionResult.ACTION_DONE, result);
     }
 
-    // Unsuccessful action
     @Test
     public void testMakeActionUnsuccessful() {
-        ActionResult result = makeActionState.makeAction(player, location, null, null);
+        ActionResult result = makeActionState.makeAction(player, location, resources, resources);
         assertEquals(ActionResult.FAILURE, result);
     }
 }
